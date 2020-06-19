@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.dsckiet.covid_tracker_android_app"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Support libraries & Android KTX
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+    implementation "androidx.fragment:fragment:$version_fragment"
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+    implementation "androidx.core:core-ktx:$version_core"
+    implementation "androidx.preference:preference-ktx:$version_preference"
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$version_swiperefreshlayout"
+    implementation "com.google.android.material:material:$version_material"
+
+    //Smooth Bottom Navigation View
+    implementation "com.github.ibrahimsn98:SmoothBottomBar:$version_smooth_bottom_bar"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // Coroutines for getting off the UI thread
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+
+    // Retrofit for networking
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // Moshi for parsing the JSON format
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi"
+
+    // Joda time library for dealing with time
+    implementation "joda-time:joda-time:$version_joda"
+
+    // ViewModel and LiveData (arch components)
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
+
+    // Koin Dependency Injection
+    implementation "org.koin:koin-core:$version_koin"
+    implementation "org.koin:koin-android:$version_koin"
+    implementation "org.koin:koin-android-scope:$version_koin"
+    implementation "org.koin:koin-android-viewmodel:$version_koin"
+
+    // Logging
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    // Glide for images
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+
+    // Room database
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime-ktx:$version_work"
+
+    implementation 'com.android.support:multidex:1.0.3'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
