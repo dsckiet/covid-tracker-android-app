@@ -1,9 +1,11 @@
 package com.dsckiet.covid_tracker_android_app.utils
 
+import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
+@SuppressLint("SimpleDateFormat")
 fun getPeriod(past: Date): String {
     val now = Date()
     val seconds = TimeUnit.MILLISECONDS.toSeconds(now.time - past.time)
@@ -27,16 +29,18 @@ fun getPeriod(past: Date): String {
     }
 }
 
-fun String.toDateFormat(): Date {
+@SuppressLint("SimpleDateFormat")
+fun String.toDateFormat(): Date? {
     return SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         .parse(this)
 }
 
-fun globalTimeDateFormat(time: String): Date {
+fun globalTimeDateFormat(time: String): Date? {
     val format = SimpleDateFormat(
         "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US
     )
     format.timeZone = TimeZone.getTimeZone("UTC")
     return format.parse(time)
+
 
 }
