@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/frag_Globe">
+
+    <fragment
+        android:id="@+id/frag_Globe"
+        android:name="com.dsckiet.covid_tracker_android_app.Frag_Globe"
+        android:label="frag_globe"
+        tools:layout="@layout/frag_globe" />
+    <fragment
+        android:id="@+id/frag_India"
+        android:name="com.dsckiet.covid_tracker_android_app.Frag_India"
+        android:label="frag__india"
+        tools:layout="@layout/frag__india" />
+</navigation>

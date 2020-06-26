@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".Frag_Globe"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_app_bg" />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Covid-19 Tracker"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appName"
+            android:layout_marginLeft="28dp"
+            android:text="Statistics"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <RadioGroup
+            android:id="@+id/readiobutton"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/title"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radio_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio_tab_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="Global"
+                android:textColor="@drawable/radio_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio_tab_selector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="India"
+                android:textColor="@drawable/radio_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+        <TextView
+            android:paddingBottom="4dp"
+            android:id="@+id/update_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/readiobutton"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="12sp"
+            android:text="Last updated 4 hours ago"
+            android:textColor="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/update_txt">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:layout_weight="1"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="2">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/confirmed_img"
+                                android:layout_width="@dimen/fifty"
+                                android:layout_height="@dimen/fifty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_total_patient"
+                                android:tint="@color/yellow" />
+
+                            <TextView
+                                android:id="@+id/confirmed_arrow_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="16dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="2,397"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_toLeftOf="@id/confirmed_arrow_number"
+                                android:scaleType="centerInside"
+                                android:tint="@color/yellow"
+                                app:srcCompat="@drawable/ic_trend" />
+
+                            <TextView
+                                android:id="@+id/confirmed_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="7,032,251"
+                                android:textColor="@color/yellow"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/confirmed_count"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="16sp"
+                                android:text="CONFIRMED"
+                                android:textColor="@color/grey"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/active_img"
+                                android:layout_width="@dimen/fifty"
+                                android:layout_height="@dimen/fifty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_active_patient"
+                                android:tint="@color/red" />
+
+                            <TextView
+                                android:id="@+id/active_arrow_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="16dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="2,397"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_toLeftOf="@id/active_arrow_number"
+                                android:scaleType="centerInside"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_trend" />
+
+                            <TextView
+                                android:id="@+id/active_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="7,032,251"
+                                android:textColor="@color/red"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/active_count"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="16sp"
+                                android:text="ACTIVE"
+                                android:textColor="@color/grey"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/recover_img"
+                                android:layout_width="@dimen/fifty"
+                                android:layout_height="@dimen/fifty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_recover"
+                                android:tint="@color/blue" />
+
+                            <TextView
+                                android:id="@+id/recover_arrow_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="16dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="2,397"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_toLeftOf="@id/recover_arrow_number"
+                                android:scaleType="centerInside"
+                                android:tint="@color/blue"
+                                app:srcCompat="@drawable/ic_trend" />
+
+                            <TextView
+                                android:id="@+id/recover_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="7,032,251"
+                                android:textColor="@color/blue"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/recover_count"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="16sp"
+                                android:text="RECOVERED"
+                                android:textColor="@color/grey"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/rip_img"
+                                android:layout_width="@dimen/fifty"
+                                android:layout_height="@dimen/fifty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_deaths"
+                                android:tint="@color/grey" />
+
+                            <TextView
+                                android:id="@+id/rip_arrow_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="16dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="2,397"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_toLeftOf="@id/rip_arrow_number"
+                                android:scaleType="centerInside"
+                                android:tint="@color/grey"
+                                app:srcCompat="@drawable/ic_trend" />
+
+                            <TextView
+                                android:id="@+id/rip_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="7,032,251"
+                                android:textColor="@color/grey"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/rip_count"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="16sp"
+                                android:text="DEATHS"
+                                android:textColor="@color/grey"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </GridLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pieChart"
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/pieChart"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/circle"
+                                    android:tint="@color/grey" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="3dp"
+                                    android:text="Deceased"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="16dp"
+                                    android:text="6%"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="8dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/circle"
+                                    android:tint="@color/blue" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:text="Recovered"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="12dp"
+                                    android:text="50%"
+                                    android:textColor="@color/blue"
+                                    android:textSize="10sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="8dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/circle"
+                                    android:tint="@color/red" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:text="Active"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="32dp"
+                                    android:text="44%"
+                                    android:textColor="@color/red"
+                                    android:textSize="10sp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:text="Countries affected by corona virus"
+                            android:textColor="@color/dark_blue"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Global Top 5"
+                            android:textColor="@color/dark_blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="200dp"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/dark_blue" />
+
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:alignmentMode="alignMargins"
+                            android:columnCount="4"
+                            android:rowCount="1">
+
+                            <TextView
+                                android:id="@+id/country"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:text="Country"
+                                android:textColor="@color/dark_blue"
+                                android:textSize="@dimen/sixteen" />
+
+                            <TextView
+                                android:id="@+id/A"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:paddingLeft="20dp"
+                                android:text="A"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/sixteen" />
+
+                            <TextView
+                                android:id="@+id/R"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:paddingLeft="20dp"
+                                android:text="R"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/sixteen" />
+
+                            <TextView
+                                android:id="@+id/D"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:paddingLeft="20dp"
+                                android:text="D"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/sixteen" />
+                        </GridLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            tools:itemCount="5"
+                            android:clipToPadding="true"
+                            tools:listitem="@layout/listitem_countries" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
