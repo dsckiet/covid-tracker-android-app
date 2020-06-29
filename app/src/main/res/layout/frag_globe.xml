@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context=".Frag_Globe"
+    tools:context=".GlobalFragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent">
 
@@ -43,8 +43,8 @@
 
 
         <RadioGroup
-            android:id="@+id/readiobutton"
-            android:layout_width="240dp"
+            android:id="@+id/radiobutton"
+            android:layout_width="230dp"
             android:layout_height="40dp"
             android:layout_below="@id/title"
             android:layout_marginLeft="28dp"
@@ -53,6 +53,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rb_globe"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -66,6 +67,7 @@
                 android:textStyle="bold" />
 
             <RadioButton
+                android:id="@+id/rb_india"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -82,10 +84,10 @@
 
         <TextView
             android:paddingBottom="4dp"
-            android:id="@+id/update_txt"
+            android:id="@+id/last_updated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/readiobutton"
+            android:layout_below="@id/radiobutton"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="6dp"
             android:fontFamily="sans-serif-light"
@@ -96,7 +98,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/update_txt">
+            android:layout_below="@id/last_updated">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -295,7 +297,7 @@
                                 app:srcCompat="@drawable/ic_trend" />
 
                             <TextView
-                                android:id="@+id/recover_count"
+                                android:id="@+id/recovered_count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -311,7 +313,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_above="@id/recover_count"
+                                android:layout_above="@id/recovered_count"
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginRight="16sp"
@@ -611,6 +613,8 @@
                         </GridLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            android:id="@+id/recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"

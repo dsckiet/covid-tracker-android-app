@@ -14,7 +14,7 @@
         android:rowCount="1">
 
         <TextView
-            android:id="@+id/country"
+            android:id="@+id/area"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -51,6 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
+            android:paddingLeft="10dp"
             android:layout_columnWeight="1"
             android:text="230"
             android:textColor="@color/grey"

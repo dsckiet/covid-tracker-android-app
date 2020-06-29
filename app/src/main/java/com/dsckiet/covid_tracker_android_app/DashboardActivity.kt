@@ -10,7 +10,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        if (!InternetConnectivity.isNetworkAvailable(this))
+        if (!InternetConnectivity.isNetworkAvailable(this)!!)
             Toast.makeText(this, "Internet Unavailable", Toast.LENGTH_SHORT).show()
     }
 }

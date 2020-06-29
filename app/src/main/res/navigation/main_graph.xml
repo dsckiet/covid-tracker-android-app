@@ -7,12 +7,20 @@
 
     <fragment
         android:id="@+id/frag_Globe"
-        android:name="com.dsckiet.covid_tracker_android_app.Frag_Globe"
+        android:name="com.dsckiet.covid_tracker_android_app.GlobalFragment"
         android:label="frag_globe"
-        tools:layout="@layout/frag_globe" />
+        tools:layout="@layout/frag_globe" >
+        <action
+            android:id="@+id/action_frag_Globe_to_frag_India"
+            app:destination="@id/frag_India" />
+    </fragment>
     <fragment
         android:id="@+id/frag_India"
-        android:name="com.dsckiet.covid_tracker_android_app.Frag_India"
-        android:label="frag__india"
-        tools:layout="@layout/frag__india" />
+        android:name="com.dsckiet.covid_tracker_android_app.IndiaFragment"
+        android:label="frag_india"
+        tools:layout="@layout/frag_india">
+        <action
+            android:id="@+id/action_frag_India_to_frag_Globe"
+            app:destination="@id/frag_Globe" />
+    </fragment>
 </navigation>
