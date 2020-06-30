@@ -44,7 +44,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         jvmTarget = "1.8"
     }
 }
-
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Support libraries & Android KTX
@@ -76,6 +78,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi"
 
     // Joda time library for dealing with time
@@ -109,4 +112,7 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }
