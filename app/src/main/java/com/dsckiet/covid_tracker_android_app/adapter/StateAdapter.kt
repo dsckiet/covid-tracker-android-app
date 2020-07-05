@@ -43,13 +43,11 @@ class StateAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
-        val item = list[position +1]
+        val item = list[position + 1]
         holder.active.text = item.active
         holder.death.text = item.deaths
         holder.recovered.text = item.recovered
         holder.stateName.text = item.state
-
-
     }
 
 
