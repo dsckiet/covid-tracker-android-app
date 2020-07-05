@@ -9,4 +9,9 @@
     <color name="red">#fe8787</color>
     <color name="grey">#797979</color>
     <color name="dark_blue">#2072ba</color>
+    <color name="blue_text_line_chart">#0051A2</color>
+    <color name="next_screen_button">#477FB1</color>
+    <color name="red_color_line_chart">#FF063A</color>
+    <color name="line_chart_text">#E86985</color>
+    <color name="last_updated_time">#005198</color>
 </resources>

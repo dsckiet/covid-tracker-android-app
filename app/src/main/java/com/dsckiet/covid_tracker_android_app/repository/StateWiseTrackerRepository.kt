@@ -3,6 +3,7 @@ package com.dsckiet.covid_tracker_android_app.repository
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.dsckiet.covid_tracker_android_app.models.CasesTimeSery
 import com.dsckiet.covid_tracker_android_app.models.StateWiseData
 import com.dsckiet.covid_tracker_android_app.models.Statewise
 import com.dsckiet.covid_tracker_android_app.network.CoronaIndiaTrackerClient
@@ -13,6 +14,7 @@ import retrofit2.Response
 
 class StateWiseTrackerRepository(val application: Application) {
     val showCoronaStateDetails = MutableLiveData<List<Statewise>>()
+    val showCoronaIndiaLineChart = MutableLiveData<List<CasesTimeSery>>()
     fun getCoronaStateDetails() {
 
 
@@ -28,8 +30,13 @@ class StateWiseTrackerRepository(val application: Application) {
                 call: Call<StateWiseData>,
                 response: Response<StateWiseData>
             ) {
-                if (response.body()?.statewise != null)
+                if (response.body()?.statewise != null) {
                     showCoronaStateDetails.value = response.body()!!.statewise
+
+                }
+                if (response.body()?.casesTimeSeries != null) {
+                    showCoronaIndiaLineChart.value = response.body()!!.casesTimeSeries
+                }
             }
 
         })
