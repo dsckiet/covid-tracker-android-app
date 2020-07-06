@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:columnCount="5"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/country_name"
+                android:layout_width="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1.3"
+                android:layout_marginLeft="4dp"
+                android:height="80dp"
+                android:gravity="center"
+                android:text="Country"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_list"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/arrow_image_confirm"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="centerCrop"
+                        android:tint="@color/yellow"
+                        app:srcCompat="@drawable/ic_trend" />
+
+                    <TextView
+                        android:id="@+id/confirmed_case_delta_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="23"
+                        android:textColor="@color/yellow"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/confirmed_case_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16354"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/text_list"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/active_case_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:text="16354"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_list"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/arrow_image_recovered"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="centerCrop"
+                        android:tint="@color/blue"
+                        app:srcCompat="@drawable/ic_trend" />
+
+                    <TextView
+                        android:id="@+id/recovered_case_delta_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="23"
+                        android:textColor="@color/blue"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recovered_case_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16354"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_list"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/arrow_image_death"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="centerCrop"
+                        android:tint="@color/grey"
+                        app:srcCompat="@drawable/ic_trend" />
+
+                    <TextView
+                        android:id="@+id/death_case_delta_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="23"
+                        android:textColor="@color/grey"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/death_case_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16354"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_list"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </GridLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

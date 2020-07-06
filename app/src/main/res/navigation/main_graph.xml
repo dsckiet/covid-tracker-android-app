@@ -7,20 +7,53 @@
 
     <fragment
         android:id="@+id/frag_Globe"
-        android:name="com.dsckiet.covid_tracker_android_app.GlobalFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.GlobalFragment"
         android:label="frag_globe"
-        tools:layout="@layout/frag_globe" >
+        tools:layout="@layout/frag_globe">
         <action
             android:id="@+id/action_frag_Globe_to_frag_India"
-            app:destination="@id/frag_India" />
+            app:destination="@id/frag_India"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_frag_Globe_to_countryListFragment"
+            app:destination="@id/countryListFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/frag_India"
-        android:name="com.dsckiet.covid_tracker_android_app.IndiaFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.IndiaFragment"
         android:label="frag_india"
         tools:layout="@layout/frag_india">
         <action
             android:id="@+id/action_frag_India_to_frag_Globe"
-            app:destination="@id/frag_Globe" />
+            app:destination="@id/frag_Globe"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_frag_India_to_stateListFragment"
+            app:destination="@id/stateListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/countryListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.CountryListFragment"
+        android:label="fragment_country_list"
+        tools:layout="@layout/fragment_country_list" />
+    <fragment
+        android:id="@+id/stateListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.StateListFragment"
+        android:label="fragment_state_list"
+        tools:layout="@layout/fragment_state_list">
+        <action
+            android:id="@+id/action_stateListFragment_to_districtListFragment"
+            app:destination="@id/districtListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/districtListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.DistrictListFragment"
+        android:label="fragment_district_list"
+        tools:layout="@layout/fragment_district_list" />
 </navigation>
