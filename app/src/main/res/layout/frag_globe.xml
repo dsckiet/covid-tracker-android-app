@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    tools:context=".GlobalFragment"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.GlobalFragment">
 
     <RelativeLayout
 
@@ -25,7 +25,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/open_sans"
-            android:text="Covid-19 Tracker"
+            android:text="@string/covid_19_tracker"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/appName"
             android:layout_marginLeft="28dp"
-            android:text="Statistics"
             android:layout_marginTop="4dp"
+            android:text="@string/statistics"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -83,7 +83,6 @@
         </RadioGroup>
 
         <TextView
-            android:paddingBottom="4dp"
             android:id="@+id/last_updated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,9 +90,9 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="6dp"
             android:fontFamily="sans-serif-light"
-            android:textSize="12sp"
-            android:text="Last updated 4 hours ago"
-            android:textColor="@color/white" />
+            android:paddingBottom="4dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -145,7 +144,6 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="16dp"
                                 android:fontFamily="sans-serif-condensed-light"
-                                android:text="2,397"
                                 android:textStyle="bold" />
 
                             <ImageView
@@ -166,7 +164,6 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginRight="12dp"
                                 android:layout_marginBottom="6dp"
-                                android:text="7,032,251"
                                 android:textColor="@color/yellow"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -206,26 +203,6 @@
                                 android:src="@drawable/ic_active_patient"
                                 android:tint="@color/red" />
 
-                            <TextView
-                                android:id="@+id/active_arrow_number"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginRight="16dp"
-                                android:fontFamily="sans-serif-condensed-light"
-                                android:text="2,397"
-                                android:textStyle="bold" />
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_toLeftOf="@id/active_arrow_number"
-                                android:scaleType="centerInside"
-                                android:tint="@color/red"
-                                app:srcCompat="@drawable/ic_trend" />
 
                             <TextView
                                 android:id="@+id/active_count"
@@ -284,7 +261,6 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="16dp"
                                 android:fontFamily="sans-serif-condensed-light"
-                                android:text="2,397"
                                 android:textStyle="bold" />
 
                             <ImageView
@@ -305,7 +281,6 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginRight="12dp"
                                 android:layout_marginBottom="6dp"
-                                android:text="7,032,251"
                                 android:textColor="@color/blue"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -353,7 +328,6 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="16dp"
                                 android:fontFamily="sans-serif-condensed-light"
-                                android:text="2,397"
                                 android:textStyle="bold" />
 
                             <ImageView
@@ -374,7 +348,6 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginRight="12dp"
                                 android:layout_marginBottom="6dp"
-                                android:text="7,032,251"
                                 android:textColor="@color/grey"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -407,10 +380,10 @@
 
                         <com.github.mikephil.charting.charts.PieChart
                             android:id="@+id/pieChart"
-                            android:layout_width="190dp"
+                            android:layout_width="200dp"
                             android:layout_height="match_parent"
                             android:layout_centerVertical="true"
-                            android:layout_margin="8dp" />
+                            android:layout_marginRight="8dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -442,8 +415,9 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    android:id="@+id/deceased_percent"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="match_parent"
                                     android:layout_marginLeft="16dp"
                                     android:text="6%"
                                     android:textColor="@color/grey"
@@ -473,6 +447,7 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    android:id="@+id/recovered_percent"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="12dp"
@@ -504,6 +479,7 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    android:id="@+id/active_percent"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="32dp"
@@ -520,7 +496,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="24dp"
@@ -574,6 +550,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_rowWeight="1"
                                 android:layout_columnWeight="1"
+                                android:gravity="center"
                                 android:text="Country"
                                 android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/sixteen" />
@@ -584,6 +561,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_rowWeight="1"
                                 android:layout_columnWeight="1"
+                                android:gravity="center"
                                 android:paddingLeft="20dp"
                                 android:text="A"
                                 android:textColor="@color/red"
@@ -595,6 +573,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_rowWeight="1"
                                 android:layout_columnWeight="1"
+                                android:gravity="center"
                                 android:paddingLeft="20dp"
                                 android:text="R"
                                 android:textColor="@color/blue"
@@ -606,6 +585,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_rowWeight="1"
                                 android:layout_columnWeight="1"
+                                android:gravity="center"
                                 android:paddingLeft="20dp"
                                 android:text="D"
                                 android:textColor="@color/grey"
@@ -613,17 +593,56 @@
                         </GridLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             android:id="@+id/recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
-                            tools:itemCount="5"
                             android:clipToPadding="true"
+                            android:paddingBottom="10dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="5"
                             tools:listitem="@layout/listitem_countries" />
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/next_screen_btn"
+                            android:layout_width="100dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@color/next_screen_button"
+                            android:clickable="true"
+                            app:cardCornerRadius="4dp"
+                            app:cardElevation="4dp">
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/next_screen_button"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="2dp"
+                                    android:text="View all"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <!--                                <ImageView-->
+                                <!--                                    android:layout_width="30dp"-->
+                                <!--                                    android:layout_height="30dp"-->
+                                <!--                                    android:padding="2dp"-->
+                                <!--                                    android:scaleType="centerCrop"-->
+                                <!--                                    app:srcCompat="@drawable/ic_arrow_right" />-->
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
 
                 </androidx.cardview.widget.CardView>
 

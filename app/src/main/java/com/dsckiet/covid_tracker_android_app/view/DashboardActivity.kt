@@ -1,8 +1,9 @@
-package com.dsckiet.covid_tracker_android_app
+package com.dsckiet.covid_tracker_android_app.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
 
 class DashboardActivity : AppCompatActivity() {
