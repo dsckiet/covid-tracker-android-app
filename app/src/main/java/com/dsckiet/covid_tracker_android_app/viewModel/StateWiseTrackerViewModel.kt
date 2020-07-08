@@ -10,10 +10,12 @@ import com.dsckiet.covid_tracker_android_app.repository.StateWiseTrackerReposito
 
 class StateWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
     val showCoronaStateDetails: LiveData<List<Statewise>>
+    val showProgress: LiveData<Boolean>
     val showCoronaIndiaLineChart: LiveData<List<CasesTimeSery>>
     private val repository = StateWiseTrackerRepository(application)
 
     init {
+        this.showProgress = repository.showProgress
         this.showCoronaStateDetails = repository.showCoronaStateDetails
         this.showCoronaIndiaLineChart = repository.showCoronaIndiaLineChart
     }
