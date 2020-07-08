@@ -1,203 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.StateListFragment">
 
-    <RelativeLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutState"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff">
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_app_bg" />
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_app_bg" />
 
 
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="26dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="26dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <TextView
-            android:id="@+id/appName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_toRightOf="@id/back_button"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/covid_19_tracker"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_toRightOf="@id/back_button"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/covid_19_tracker"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/appName"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="20dp"
-            android:text="States/UT Data (All)"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appName"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:text="States/UT Data (All)"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/title"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="16dp">
-
-            <GridLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:alignmentMode="alignMargins"
-                android:columnCount="6"
-                android:rowCount="1">
+                android:layout_below="@id/title"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="16dp">
 
-                <TextView
-                    android:layout_width="0dp"
+                <GridLayout
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:layout_columnWeight="1.3"
-                    android:gravity="center"
-                    android:text="States/UT"
-                    android:textColor="@color/grey"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/confirmed_img"
-                        android:layout_width="@dimen/forty"
-                        android:layout_height="@dimen/forty"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_total_patient"
-                        android:tint="@color/yellow" />
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="6"
+                    android:rowCount="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CONFIRMED"
-                        android:textColor="@color/yellow"
-                        android:textSize="@dimen/ten"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/active_img"
-                        android:layout_width="@dimen/forty"
-                        android:layout_height="@dimen/forty"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_active_patient"
-                        android:tint="@color/red" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ACTIVE"
-                        android:textColor="@color/red"
-                        android:textSize="@dimen/ten"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/recovered_img"
-                        android:layout_width="@dimen/forty"
-                        android:layout_height="@dimen/forty"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_recover"
-                        android:tint="@color/blue" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RECOVERED"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/ten"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/deaths_img"
-                        android:layout_width="@dimen/forty"
-                        android:layout_height="@dimen/forty"
-                        android:layout_margin="8dp"
-
-                        android:src="@drawable/ic_deaths"
-                        android:tint="@color/grey" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DECEASED"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1.3"
+                        android:gravity="center"
+                        android:text="States/UT"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/ten"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_columnWeight="0.4" />
+                        <ImageView
+                            android:id="@+id/confirmed_img"
+                            android:layout_width="@dimen/forty"
+                            android:layout_height="@dimen/forty"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_total_patient"
+                            android:tint="@color/yellow" />
 
-            </GridLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CONFIRMED"
+                            android:textColor="@color/yellow"
+                            android:textSize="@dimen/ten"
+                            android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_state_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card_view"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/listitem_state_list" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/active_img"
+                            android:layout_width="@dimen/forty"
+                            android:layout_height="@dimen/forty"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_active_patient"
+                            android:tint="@color/red" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ACTIVE"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/ten"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/recovered_img"
+                            android:layout_width="@dimen/forty"
+                            android:layout_height="@dimen/forty"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_recover"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RECOVERED"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/ten"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/deaths_img"
+                            android:layout_width="@dimen/forty"
+                            android:layout_height="@dimen/forty"
+                            android:layout_margin="8dp"
+
+                            android:src="@drawable/ic_deaths"
+                            android:tint="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DECEASED"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/ten"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="0.4" />
+
+                </GridLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_state_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_view"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/listitem_state_list" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
