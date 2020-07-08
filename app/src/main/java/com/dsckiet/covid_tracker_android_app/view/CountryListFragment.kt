@@ -41,8 +41,18 @@ class CountryListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        getData()
+        swipeRefreshLayout.setOnRefreshListener {
+            getData()
+        }
+    }
+
+    private fun getData() {
         viewModel = ViewModelProvider(this).get(CountryWiseTrackerViewModel::class.java)
         adapter = CountriesCompleteListAdapter(requireContext())
+        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayout.isRefreshing = it
+        })
         viewModel.getCoronaCountryDetails()
         recycler_view_country_list.adapter = adapter
         viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {

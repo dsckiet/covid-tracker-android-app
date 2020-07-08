@@ -12,8 +12,11 @@ import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.adapter.DistrictAdapter
 import com.dsckiet.covid_tracker_android_app.viewModel.DistrictWiseTrackerViewModel
+import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlinx.android.synthetic.main.fragment_country_list.back_button
 import kotlinx.android.synthetic.main.fragment_district_list.*
+import kotlinx.android.synthetic.main.fragment_district_list.last_updated
+import kotlinx.android.synthetic.main.fragment_district_list.swipeRefreshLayout
 
 
 class DistrictListFragment : Fragment() {
@@ -45,10 +48,20 @@ class DistrictListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getData()
+        swipeRefreshLayout.setOnRefreshListener {
+            getData()
+        }
+
+    }
+
+    private fun getData() {
         viewModel = ViewModelProvider(this).get(DistrictWiseTrackerViewModel::class.java)
         viewModel.getCoronaDistrictDetails()
         adapter = DistrictAdapter(requireContext())
-
+        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayout.isRefreshing = it
+        })
         recycler_view_district_list.adapter = adapter
         if (stateCode != null) {
             viewModel.showDistrictWiseDetails.observe(viewLifecycleOwner, Observer {
@@ -61,7 +74,6 @@ class DistrictListFragment : Fragment() {
                     }
             })
         }
-
     }
 
 
