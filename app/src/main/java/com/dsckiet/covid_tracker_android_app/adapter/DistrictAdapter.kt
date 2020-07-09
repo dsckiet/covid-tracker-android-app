@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.models.DistrictData
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import kotlinx.android.synthetic.main.listitem_complete_list.view.*
 
 class DistrictAdapter(private val context: Context) :
@@ -43,13 +44,13 @@ class DistrictAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var item = sortedList[position]
         holder.cityName.text = item.district
-        holder.active.text = item.active.toString()
-        holder.death.text = item.deceased.toString()
-        holder.confirmed.text = item.confirmed.toString()
-        holder.recovered.text = item.recovered.toString()
-        holder.confirmedDelta.text = item.delta.confirmed.toString()
-        holder.recoveredDelta.text = item.delta.recovered.toString()
-        holder.deathDelta.text = item.delta.deceased.toString()
+        holder.active.text = stringToNumberFormat(item.active.toString())
+        holder.death.text = stringToNumberFormat(item.deceased.toString())
+        holder.confirmed.text = stringToNumberFormat(item.confirmed.toString())
+        holder.recovered.text = stringToNumberFormat(item.recovered.toString())
+        holder.confirmedDelta.text = stringToNumberFormat(item.delta.confirmed.toString())
+        holder.recoveredDelta.text = stringToNumberFormat(item.delta.recovered.toString())
+        holder.deathDelta.text = stringToNumberFormat(item.delta.deceased.toString())
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

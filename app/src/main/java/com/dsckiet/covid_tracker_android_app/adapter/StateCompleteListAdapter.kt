@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.models.Statewise
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import com.dsckiet.covid_tracker_android_app.utils.toDateFormat
 import kotlinx.android.synthetic.main.listitem_state_list.view.*
 
@@ -47,14 +48,14 @@ class StateCompleteListAdapter(private val context: Context) :
 
         if (position < list.size - 2) {
             val item = list[position + 1]
-            holder.active.text = item!!.active
-            holder.death.text = item.deaths
-            holder.confirmed.text = item.confirmed
-            holder.recovered.text = item.recovered
+            holder.active.text = stringToNumberFormat(item!!.active)
+            holder.death.text = stringToNumberFormat(item.deaths)
+            holder.confirmed.text = stringToNumberFormat(item.confirmed)
+            holder.recovered.text = stringToNumberFormat(item.recovered)
             holder.stateName.text = item.state
-            holder.confirmedDelta.text = item.deltaconfirmed
-            holder.deathDelta.text = item.deltadeaths
-            holder.recoveredDelta.text = item.deltarecovered
+            holder.confirmedDelta.text = stringToNumberFormat(item.deltaconfirmed)
+            holder.deathDelta.text = stringToNumberFormat(item.deltadeaths)
+            holder.recoveredDelta.text = stringToNumberFormat(item.deltarecovered)
             val lastUpdatedTime =
                 "Last Updated " + getPeriod(item.lastupdatedtime.toDateFormat()!!)
             holder.lastUpdatedTime.text = lastUpdatedTime

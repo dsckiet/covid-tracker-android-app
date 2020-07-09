@@ -9,9 +9,11 @@ import com.dsckiet.covid_tracker_android_app.repository.CountryWiseTrackerReposi
 
 class CountryWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
     val showCoronaCountryDetails: LiveData<CountryWiseData>
+    val showProgress: LiveData<Boolean>
     private val repository = CountryWiseTrackerRepository(application)
 
     init {
+        this.showProgress = repository.showProgress
         this.showCoronaCountryDetails = repository.showCoronaCountryDetails
     }
 

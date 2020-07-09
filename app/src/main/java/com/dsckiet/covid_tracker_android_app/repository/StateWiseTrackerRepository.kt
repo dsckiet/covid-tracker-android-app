@@ -15,13 +15,16 @@ import retrofit2.Response
 class StateWiseTrackerRepository(val application: Application) {
     val showCoronaStateDetails = MutableLiveData<List<Statewise>>()
     val showCoronaIndiaLineChart = MutableLiveData<List<CasesTimeSery>>()
+    val showProgress = MutableLiveData<Boolean>()
     fun getCoronaStateDetails() {
 
 
         val retrofitService = CoronaIndiaTrackerClient.getClient(application)
         val callApi = retrofitService.getStateWiseCoronaDetails()
+        showProgress.value = true
         callApi.enqueue(object : Callback<StateWiseData> {
             override fun onFailure(call: Call<StateWiseData>, t: Throwable) {
+                showProgress.value = false
                 Toast.makeText(application, "Error : ${t.message}", Toast.LENGTH_SHORT).show()
 
             }
@@ -30,6 +33,7 @@ class StateWiseTrackerRepository(val application: Application) {
                 call: Call<StateWiseData>,
                 response: Response<StateWiseData>
             ) {
+                showProgress.value = false
                 if (response.body()?.statewise != null) {
                     showCoronaStateDetails.value = response.body()!!.statewise
 

@@ -11,11 +11,14 @@ import retrofit2.Response
 
 class CountryWiseTrackerRepository(val application: Application) {
     val showCoronaCountryDetails = MutableLiveData<CountryWiseData>()
+    val showProgress = MutableLiveData<Boolean>()
     fun getCoronaCountryDetails() {
         val retrofitService = CoronaGlobalTrackerClient.getClient(application)
         val callApi = retrofitService.getCountryWiseCoronaDetails()
+        showProgress.value = true
         callApi.enqueue(object : Callback<CountryWiseData> {
             override fun onFailure(call: Call<CountryWiseData>, t: Throwable) {
+                showProgress.value = false
                 Toast.makeText(application, "Error : ${t.message}", Toast.LENGTH_SHORT).show()
 
             }
@@ -24,6 +27,7 @@ class CountryWiseTrackerRepository(val application: Application) {
                 call: Call<CountryWiseData>,
                 response: Response<CountryWiseData>
             ) {
+                showProgress.value = false
                 showCoronaCountryDetails.value = response.body()
             }
 

@@ -15,6 +15,7 @@ import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.adapter.StateAdapter
 import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import com.dsckiet.covid_tracker_android_app.utils.toDateFormat
 import com.dsckiet.covid_tracker_android_app.viewModel.StateWiseTrackerViewModel
 import com.github.mikephil.charting.components.XAxis
@@ -33,6 +34,8 @@ class IndiaFragment : Fragment() {
     lateinit var navController: NavController
     private val entries = ArrayList<Entry>()
     private val xAxisLabel: ArrayList<String> = ArrayList()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +63,13 @@ class IndiaFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getData()
+        swipeRefreshLayout.setOnRefreshListener {
+            getData()
+        }
+    }
+
+    private fun getData() {
         viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
         adapter = StateAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
@@ -69,8 +79,8 @@ class IndiaFragment : Fragment() {
 
         viewModel.showCoronaIndiaLineChart.observe(viewLifecycleOwner, Observer {
             current_date.text = it[it.size - 1].date
-            confirmed_case.text = it[it.size - 1].totalconfirmed
-            confirmed_case_delta.text = "+" + it[it.size - 1].dailyconfirmed
+            confirmed_case.text = stringToNumberFormat(it[it.size - 1].totalconfirmed)
+            confirmed_case_delta.text = "+" + stringToNumberFormat(it[it.size - 1].dailyconfirmed)
             for (i in 30 until it.size) {
                 if (i % 2 == 0)
                     entries.add(
@@ -130,18 +140,22 @@ class IndiaFragment : Fragment() {
 
 
         })
+        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayout.isRefreshing = it
+        })
+
 
         viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             val lastUpdatedTime =
                 "Last Updated " + getPeriod(it[0].lastupdatedtime.toDateFormat()!!)
             last_updated.text = lastUpdatedTime
-            confirmed_count.text = it[0].confirmed
-            recover_count.text = it[0].recovered
-            rip_count.text = it[0].deaths
-            active_count.text = it[0].active
-            confirmed_arrow_number.text = it[0].deltarecovered
-            recover_arrow_number.text = it[0].deltarecovered
-            rip_arrow_number.text = it[0].deltadeaths
+            confirmed_count.text = stringToNumberFormat(it[0].confirmed)
+            recover_count.text = stringToNumberFormat(it[0].recovered)
+            rip_count.text = stringToNumberFormat(it[0].deaths)
+            active_count.text = stringToNumberFormat(it[0].active)
+            confirmed_arrow_number.text = stringToNumberFormat(it[0].deltarecovered)
+            recover_arrow_number.text = stringToNumberFormat(it[0].deltarecovered)
+            rip_arrow_number.text = stringToNumberFormat(it[0].deltadeaths)
             adapter.setStateWiseTracker(it)
         })
     }
