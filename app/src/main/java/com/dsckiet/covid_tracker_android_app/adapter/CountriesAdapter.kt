@@ -58,7 +58,7 @@ class CountriesAdapter(private val context: Context) :
         holder.active.text = stringToNumberFormat(totalActive.toString())
         holder.recovered.text = stringToNumberFormat(item.totalRecovered.toString())
         holder.death.text = stringToNumberFormat(item.totalDeaths.toString())
-        holder.stateName.text = stringToNumberFormat(item.country)
+        holder.stateName.text = item.country
 
     }
 
