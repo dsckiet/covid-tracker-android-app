@@ -8,9 +8,11 @@ import com.dsckiet.covid_tracker_android_app.repository.DistrictWiseTrackerRepos
 
 class DistrictWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
     val showDistrictWiseDetails: LiveData<List<DistrictWiseData>>
+    val showProgress: LiveData<Boolean>
     private val repository = DistrictWiseTrackerRepository(application)
 
     init {
+        this.showProgress = repository.showProgress
         this.showDistrictWiseDetails = repository.showDistrictWiseDetails
     }
 

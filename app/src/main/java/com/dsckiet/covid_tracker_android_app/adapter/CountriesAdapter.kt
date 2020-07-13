@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.models.Country
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import kotlinx.android.synthetic.main.listitem_countries.view.*
 
 class CountriesAdapter(private val context: Context) :
@@ -54,10 +55,10 @@ class CountriesAdapter(private val context: Context) :
 
         var item = sortedList[position]
         val totalActive = item.totalConfirmed - item.totalDeaths - item.totalRecovered
-        holder.active.text = totalActive.toString()
-        holder.recovered.text = item.totalRecovered.toString()
-        holder.death.text = item.totalDeaths.toString()
-        holder.stateName.text = item.country
+        holder.active.text = stringToNumberFormat(totalActive.toString())
+        holder.recovered.text = stringToNumberFormat(item.totalRecovered.toString())
+        holder.death.text = stringToNumberFormat(item.totalDeaths.toString())
+        holder.stateName.text = stringToNumberFormat(item.country)
 
     }
 

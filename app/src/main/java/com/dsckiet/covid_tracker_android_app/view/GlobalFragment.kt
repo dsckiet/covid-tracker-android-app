@@ -17,11 +17,15 @@ import com.dsckiet.covid_tracker_android_app.adapter.CountriesAdapter
 import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
 import com.dsckiet.covid_tracker_android_app.utils.globalTimeDateFormat
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import com.dsckiet.covid_tracker_android_app.viewModel.CountryWiseTrackerViewModel
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import kotlinx.android.synthetic.main.frag_globe.*
+import kotlinx.android.synthetic.main.frag_globe.last_updated
+import kotlinx.android.synthetic.main.frag_globe.swipeRefreshLayout
+import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlin.math.roundToLong
 
 class GlobalFragment : Fragment() {
@@ -58,13 +62,23 @@ class GlobalFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getData()
+        swipeRefreshLayout.setOnRefreshListener {
+            getData()
+        }
 
+    }
+
+    private fun getData() {
         viewModel = ViewModelProvider(this).get(CountryWiseTrackerViewModel::class.java)
         adapter = CountriesAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
         viewModel.getCoronaCountryDetails()
         recycler_view.adapter = adapter
+        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayout.isRefreshing = it
+        })
         viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
             pieChart.setUsePercentValues(true)
@@ -118,7 +132,8 @@ class GlobalFragment : Fragment() {
             val pdata = PieData((data))
             data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
             pdata.setValueTextSize(10f)
-            pieChart.centerText = it.global.totalConfirmed.toString() + "\nTotal Cases"
+            pieChart.centerText =
+                stringToNumberFormat(it.global.totalConfirmed.toString()) + "\nTotal Cases"
             pieChart.setCenterTextSizePixels(30f)
             pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
             pieChart.setCenterTextSize(12f)
@@ -138,13 +153,13 @@ class GlobalFragment : Fragment() {
 
             val lastUpdatedTime = "Last Updated " + getPeriod(globalTimeDateFormat(it.date)!!)
             last_updated.text = lastUpdatedTime
-            confirmed_count.text = it.global.totalConfirmed.toString()
-            recovered_count.text = it.global.totalRecovered.toString()
-            rip_count.text = it.global.totalDeaths.toString()
-            active_count.text = activeCases.toString()
-            confirmed_arrow_number.text = it.global.newConfirmed.toString()
-            rip_arrow_number.text = it.global.newDeaths.toString()
-            recover_arrow_number.text = it.global.newRecovered.toString()
+            confirmed_count.text = stringToNumberFormat(it.global.totalConfirmed.toString())
+            recovered_count.text = stringToNumberFormat(it.global.totalRecovered.toString())
+            rip_count.text = stringToNumberFormat(it.global.totalDeaths.toString())
+            active_count.text = stringToNumberFormat(activeCases.toString())
+            confirmed_arrow_number.text = stringToNumberFormat(it.global.newConfirmed.toString())
+            rip_arrow_number.text = stringToNumberFormat(it.global.newDeaths.toString())
+            recover_arrow_number.text = stringToNumberFormat(it.global.newRecovered.toString())
             adapter.setCountryWiseTracker(it.countries)
         })
     }

@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
-import com.dsckiet.covid_tracker_android_app.adapter.StateAdapter
 import com.dsckiet.covid_tracker_android_app.adapter.StateCompleteListAdapter
 import com.dsckiet.covid_tracker_android_app.viewModel.StateWiseTrackerViewModel
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlinx.android.synthetic.main.fragment_country_list.back_button
 import kotlinx.android.synthetic.main.fragment_state_list.*
 
@@ -40,14 +38,36 @@ class StateListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getData()
+        swipeRefreshLayoutState.setOnRefreshListener {
+            getData()
+        }
+
+
+    }
+
+    private fun getData() {
         viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
         adapter = StateCompleteListAdapter(requireContext())
+
+
         viewModel.getCoronaStateDetails()
+
         recycler_view_state_list.adapter = adapter
         viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             adapter.setStateWiseTracker(it)
         })
+        swipeRefreshLayoutState.isRefreshing = false
 
+        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayoutState.isRefreshing = it
+
+        })
+        viewModel.getCoronaStateDetails()
+
+        recycler_view_state_list.adapter = adapter
+        viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
+            adapter.setStateWiseTracker(it)
+        })
     }
-
 }

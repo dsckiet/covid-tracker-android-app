@@ -11,6 +11,7 @@ import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.models.Country
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
 import com.dsckiet.covid_tracker_android_app.utils.globalTimeDateFormat
+import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import kotlinx.android.synthetic.main.listitem_complete_list.view.*
 
 class CountriesCompleteListAdapter(private val context: Context) :
@@ -52,14 +53,14 @@ class CountriesCompleteListAdapter(private val context: Context) :
 
         var item = sortedList[position]
         val totalActive = item.totalConfirmed - item.totalDeaths - item.totalRecovered
-        holder.active.text = totalActive.toString()
-        holder.recovered.text = item.totalRecovered.toString()
-        holder.death.text = item.totalDeaths.toString()
+        holder.active.text = stringToNumberFormat(totalActive.toString())
+        holder.recovered.text = stringToNumberFormat(item.totalRecovered.toString())
+        holder.death.text = stringToNumberFormat(item.totalDeaths.toString())
         holder.countryName.text = item.country
-        holder.confirmedDelta.text = item.newConfirmed.toString()
-        holder.deathDelta.text = item.newDeaths.toString()
-        holder.recoveredDelta.text = item.newRecovered.toString()
-        holder.confirmed.text = item.totalConfirmed.toString()
+        holder.confirmedDelta.text = stringToNumberFormat(item.newConfirmed.toString())
+        holder.deathDelta.text = stringToNumberFormat(item.newDeaths.toString())
+        holder.recoveredDelta.text = stringToNumberFormat(item.newRecovered.toString())
+        holder.confirmed.text = stringToNumberFormat(item.totalConfirmed.toString())
 
 
     }

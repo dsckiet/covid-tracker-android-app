@@ -11,12 +11,15 @@ import retrofit2.Response
 
 class DistrictWiseTrackerRepository(val application: Application) {
     val showDistrictWiseDetails = MutableLiveData<List<DistrictWiseData>>()
+    val showProgress = MutableLiveData<Boolean>()
 
     fun getCoronaDistrictDetails() {
         val retrofitService = CoronaIndiaTrackerClient.getClient(application)
         val callApi = retrofitService.getDistrictWiseCoronaDetails()
+        showProgress.value = true
         callApi.enqueue(object : Callback<List<DistrictWiseData>> {
             override fun onFailure(call: Call<List<DistrictWiseData>>, t: Throwable) {
+                showProgress.value = false
                 Toast.makeText(application, "Error ${t.message}", Toast.LENGTH_SHORT).show()
             }
 
@@ -24,6 +27,7 @@ class DistrictWiseTrackerRepository(val application: Application) {
                 call: Call<List<DistrictWiseData>>,
                 response: Response<List<DistrictWiseData>>
             ) {
+                showProgress.value = false
                 showDistrictWiseDetails.value = response.body()
             }
 
