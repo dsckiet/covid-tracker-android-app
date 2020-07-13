@@ -31,7 +31,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/open_sans"
-                android:text="@string/app_name"
+                android:text="@string/covid_19_tracker"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -414,6 +414,7 @@
                                         android:layout_height="match_parent" />
 
                                     <TextView
+                                        android:layout_marginTop="2dp"
                                         android:id="@+id/confirm_text"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -512,7 +513,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_rowWeight="1"
                                     android:layout_columnWeight="1"
-                                    android:gravity="center"
+                                    android:gravity="center|left"
                                     android:text="State/UT"
                                     android:textColor="@color/dark_blue"
                                     android:textSize="@dimen/sixteen" />
@@ -568,15 +569,15 @@
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/next_screen_btn"
-                                android:layout_width="100dp"
-                                android:clickable="true"
+                                android:layout_width="80dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="end"
                                 android:layout_marginRight="20dp"
                                 android:layout_marginBottom="20dp"
                                 android:background="@color/next_screen_button"
-                                app:cardCornerRadius="8dp"
-                                app:cardElevation="6dp">
+                                android:clickable="true"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -594,15 +595,8 @@
                                         android:textSize="15sp"
                                         android:textStyle="bold" />
 
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:padding="2dp"
-                                        android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/ic_arrow_right" />
 
                                 </LinearLayout>
-
                             </androidx.cardview.widget.CardView>
 
 

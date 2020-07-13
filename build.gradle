@@ -22,6 +22,7 @@ buildscript {
         version_swiperefreshlayout = "1.0.0"
         version_timber = "4.7.1"
         version_work = "2.3.4"
+        workmanager_version = '2.3.4'
     }
 
     repositories {
