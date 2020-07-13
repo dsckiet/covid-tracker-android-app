@@ -553,7 +553,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_rowWeight="1"
                                     android:layout_columnWeight="1"
-                                    android:gravity="center"
+                                    android:gravity="center|left"
                                     android:text="Country"
                                     android:textColor="@color/dark_blue"
                                     android:textSize="@dimen/sixteen" />
@@ -608,7 +608,7 @@
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/next_screen_btn"
-                                android:layout_width="100dp"
+                                android:layout_width="80dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="end"
                                 android:layout_marginRight="20dp"

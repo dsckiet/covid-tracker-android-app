@@ -22,7 +22,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:text="Country"
-            android:gravity="center"
+            android:gravity="center|left"
             android:textColor="@color/dark_blue"
             android:textSize="14sp"
             android:textStyle="bold" />
