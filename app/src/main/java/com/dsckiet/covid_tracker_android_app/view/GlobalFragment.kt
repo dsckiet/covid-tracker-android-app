@@ -134,12 +134,13 @@ class GlobalFragment : Fragment() {
             pdata.setValueTextSize(10f)
             pieChart.centerText =
                 stringToNumberFormat(it.global.totalConfirmed.toString()) + "\nTotal Cases"
-            pieChart.setCenterTextSizePixels(30f)
+
             pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
             pieChart.setCenterTextSize(12f)
             pdata.setValueTextColor(Color.YELLOW)
-            pieChart.animateY(2000)
+
             pieChart.data = pdata
+            pieChart.animateY(2000)
 
             recovered_percent.text =
                 ((it.global.totalRecovered.toDouble() / it.global.totalConfirmed.toDouble()) * 100).roundToLong()
