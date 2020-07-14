@@ -9,9 +9,7 @@ import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
-    private var pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
 
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
