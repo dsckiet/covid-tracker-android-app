@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.StateListFragment">
+    tools:context=".view.StateListFragment"
+    android:background="#ffffff">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
@@ -14,8 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -29,9 +29,15 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginLeft="28dp"
+
+                android:foregroundGravity="center_horizontal"
                 android:layout_marginTop="26dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+                android:paddingLeft="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/appName"
@@ -42,17 +48,27 @@
                 android:fontFamily="@font/open_sans"
                 android:text="@string/covid_19_tracker"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:layout_marginBottom="8dp" />
 
-
-            <TextView
-                android:id="@+id/state_name"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/appName"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="20dp"
-                android:text="Maharashtra"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appName">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/state_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Maharashtra"
                 android:textColor="@color/white"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -215,14 +231,15 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_district_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/card_view"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/listitem_complete_list" />
-
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_district_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/card_view"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/listitem_complete_list" />
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
