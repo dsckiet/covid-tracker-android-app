@@ -20,6 +20,7 @@
             android:background="@color/blue"
             app:contentScrim="@color/blue"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"

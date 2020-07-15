@@ -119,4 +119,8 @@ dependencies {
 //ViewPager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
+    implementation "androidx.work:work-runtime-ktx:$workmanager_version"
+
+    implementation "com.airbnb.android:lottie:3.4.1"
+
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".view.StateListFragment">
 
 
@@ -89,6 +90,7 @@
                 android:layout_height="320dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_app_bg" />
+
 
 
             <androidx.cardview.widget.CardView
@@ -239,6 +241,8 @@
                 tools:listitem="@layout/listitem_state_list" />
 
 
+
+          
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

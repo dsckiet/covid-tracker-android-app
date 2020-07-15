@@ -11,6 +11,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+var activeIndia: String? = null
+var lastUpdated: String? = null
 
 class StateWiseTrackerRepository(val application: Application) {
     val showCoronaStateDetails = MutableLiveData<List<Statewise>>()
@@ -41,6 +43,8 @@ class StateWiseTrackerRepository(val application: Application) {
                 if (response.body()?.casesTimeSeries != null) {
                     showCoronaIndiaLineChart.value = response.body()!!.casesTimeSeries
                 }
+                activeIndia = response.body()!!.statewise[0].active
+                lastUpdated = response.body()!!.statewise[0].lastupdatedtime
             }
 
         })

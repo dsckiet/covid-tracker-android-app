@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CountryListFragment">
+    tools:context=".view.CountryListFragment"
+    android:background="#ffffff">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -94,14 +95,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_app_bg" />
+
 
 
             <androidx.cardview.widget.CardView
@@ -251,6 +252,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/listitem_complete_list" />
         </RelativeLayout>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
