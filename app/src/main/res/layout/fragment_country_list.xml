@@ -6,11 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".view.CountryListFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            app:collapsedTitleTextAppearance="@style/Collaspedtext"
+            app:contentScrim="@color/blue"
+            app:title="Countries Data(All)"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/back_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="26dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                <TextView
+                    android:id="@+id/appName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_toRightOf="@id/back_button"
+                    android:fontFamily="@font/open_sans"
+                    android:text="@string/covid_19_tracker"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/appName"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Countries Data (All)"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/last_updated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="normal|bold" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:collapseContentDescription="Hi"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                app:titleTextColor="@color/white">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,65 +104,20 @@
                 app:srcCompat="@drawable/ic_app_bg" />
 
 
-            <ImageView
-                android:id="@+id/back_button"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="26dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
-
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_toRightOf="@id/back_button"
-                android:fontFamily="@font/open_sans"
-                android:text="@string/covid_19_tracker"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/appName"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="20dp"
-                android:text="Countries Data (All)"
-                android:textColor="@color/white"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/last_updated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="6dp"
-                android:fontFamily="sans-serif-light"
-                android:paddingBottom="4dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sixteen" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@id/last_updated"
+                android:layout_height="80dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginRight="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:alignmentMode="alignMargins"
                     android:columnCount="5"
@@ -93,6 +128,7 @@
                         android:layout_height="100dp"
                         android:layout_columnWeight="1.3"
                         android:gravity="center"
+                        android:paddingBottom="15dp"
                         android:text="Country"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/sixteen"
@@ -102,7 +138,8 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_columnWeight="1"
-                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -111,13 +148,13 @@
                             android:layout_height="@dimen/forty"
                             android:layout_margin="8dp"
                             android:src="@drawable/ic_total_patient"
-                            android:tint="@color/yellow" />
+                            android:tint="@color/blue" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CONFIRMED"
-                            android:textColor="@color/yellow"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/ten"
                             android:textStyle="bold" />
 
@@ -127,7 +164,8 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_columnWeight="1"
-                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -152,7 +190,8 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_columnWeight="1"
-                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -161,13 +200,13 @@
                             android:layout_height="@dimen/forty"
                             android:layout_margin="8dp"
                             android:src="@drawable/ic_recover"
-                            android:tint="@color/blue" />
+                            android:tint="@color/green" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="RECOVERED"
-                            android:textColor="@color/blue"
+                            android:textColor="@color/green"
                             android:textSize="@dimen/ten"
                             android:textStyle="bold" />
 
@@ -177,7 +216,8 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_columnWeight="1"
-                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -211,6 +251,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/listitem_complete_list" />
         </RelativeLayout>
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

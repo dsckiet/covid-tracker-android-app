@@ -8,4 +8,93 @@
         <item name="fontFamily">@font/open_sans</item>
     </style>
 
+    <style name="Icon">
+        <item name="android:layout_width">@dimen/fourty</item>
+        <item name="android:layout_height">@dimen/fourty</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="TrendingNumber">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TrendingIcon">
+        <item name="android:layout_width">26dp</item>
+        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="TotalCase">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal|bold</item>
+    </style>
+
+    <style name="Tags">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">16sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="RadioButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/radio_tab_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/radio_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="chartDot">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="chartText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="chartNumber">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
+    </style>
+
+    <style name="Collaspedtext" parent="AppTheme">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal|bold</item>
+    </style>
+
 </resources>

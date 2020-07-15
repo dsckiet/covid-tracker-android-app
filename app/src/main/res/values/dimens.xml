@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fifty">50dp</dimen>
+    <dimen name="fourty">40dp</dimen>
     <dimen name="sixteen">16sp</dimen>
     <dimen name="twelve">12sp</dimen>
     <dimen name="forty">35dp</dimen>
     <dimen name="ten">10sp</dimen>
-    <dimen name="text_list">14sp</dimen>
+    <dimen name="text_list">12sp</dimen>
 </resources>

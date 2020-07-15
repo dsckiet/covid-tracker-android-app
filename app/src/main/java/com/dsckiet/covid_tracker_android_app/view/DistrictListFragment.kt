@@ -70,6 +70,7 @@ class DistrictListFragment : Fragment() {
                         if (lastUpdatedTime != null)
                             last_updated.text = lastUpdatedTime
                         state_name.text = it[i].state
+                        collasping_toolbar.title = it[i].state
                         adapter.setDistrictWiseTracker(it[i].districtData)
                     }
             })

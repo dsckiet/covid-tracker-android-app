@@ -17,15 +17,16 @@
 
         <TextView
             android:id="@+id/area"
+            android:layout_marginLeft="4dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:text="Country"
-            android:gravity="center|left"
+            android:gravity="start"
             android:textColor="@color/dark_blue"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/A"
@@ -35,8 +36,8 @@
             android:layout_columnWeight="1"
             android:text="11,530"
             android:textColor="@color/red"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textStyle="normal|bold"
             android:gravity="center" />
 
         <TextView
@@ -46,9 +47,9 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:text="11,960"
-            android:textColor="@color/blue"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:textSize="12sp"
+            android:textStyle="normal|bold"
             android:gravity="center" />
 
         <TextView
@@ -60,8 +61,8 @@
             android:paddingLeft="10dp"
             android:text="230"
             android:textColor="@color/grey"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textStyle="normal|bold"
             android:gravity="center" />
     </GridLayout>
 </RelativeLayout>

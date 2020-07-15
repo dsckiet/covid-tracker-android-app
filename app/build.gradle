@@ -58,6 +58,8 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$version_swiperefreshlayout"
     implementation "com.google.android.material:material:$version_material"
+    //noinspection GradleCompatible
+    implementation "com.android.support:design:28.0.0-beta01"
 
     //Smooth Bottom Navigation View
     implementation "com.github.ibrahimsn98:SmoothBottomBar:$version_smooth_bottom_bar"
