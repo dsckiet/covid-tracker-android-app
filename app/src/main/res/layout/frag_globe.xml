@@ -428,6 +428,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="16dp"
+                                android:layout_marginTop="4dp"
                                 android:text="Global Top 5"
                                 android:textColor="@color/dark_blue"
                                 android:textSize="18sp"
@@ -456,7 +457,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_rowWeight="1"
                                     android:layout_columnWeight="1"
-                                    android:gravity="start|center_vertical"
+                                    android:gravity="center"
                                     android:text="Country"
                                     android:textColor="@color/dark_blue"
                                     android:textSize="@dimen/sixteen" />

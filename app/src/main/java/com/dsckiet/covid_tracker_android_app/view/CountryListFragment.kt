@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
-import com.dsckiet.covid_tracker_android_app.adapter.CountriesAdapter
 import com.dsckiet.covid_tracker_android_app.adapter.CountriesCompleteListAdapter
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
 import com.dsckiet.covid_tracker_android_app.utils.globalTimeDateFormat
@@ -43,12 +42,15 @@ class CountryListFragment : Fragment() {
 
         getData()
         swipeRefreshLayout.setOnRefreshListener {
+
             getData()
         }
     }
 
     private fun getData() {
+
         viewModel = ViewModelProvider(this).get(CountryWiseTrackerViewModel::class.java)
+        recycler_view_country_list.adapter
         adapter = CountriesCompleteListAdapter(requireContext())
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayout.isRefreshing = it
@@ -57,10 +59,10 @@ class CountryListFragment : Fragment() {
         recycler_view_country_list.adapter = adapter
         viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
-
             val lastUpdatedTime = "Last Updated " + getPeriod(globalTimeDateFormat(it.date)!!)
             last_updated.text = lastUpdatedTime
             adapter.setCountryWiseTracker(it.countries)
         })
     }
+
 }

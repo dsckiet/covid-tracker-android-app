@@ -29,6 +29,7 @@ class DistrictWiseTrackerRepository(val application: Application) {
             ) {
                 showProgress.value = false
                 showDistrictWiseDetails.value = response.body()
+
             }
 
         })

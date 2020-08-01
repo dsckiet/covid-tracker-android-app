@@ -22,17 +22,29 @@
             app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
 
+
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:collapseContentDescription="Hi"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:titleTextColor="@color/white"></androidx.appcompat.widget.Toolbar>
 
                 <ImageView
                     android:id="@+id/back_button"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="26dp"
-                    android:scaleType="centerCrop"
+                    android:paddingLeft="6dp"
+                    android:foreground="?selectableItemBackground"
+                    android:scaleType="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="27dp"
+
                     app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
                 <TextView
@@ -74,14 +86,7 @@
                     android:textStyle="normal|bold" />
             </RelativeLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:collapseContentDescription="Hi"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-                app:titleTextColor="@color/white">
 
-            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

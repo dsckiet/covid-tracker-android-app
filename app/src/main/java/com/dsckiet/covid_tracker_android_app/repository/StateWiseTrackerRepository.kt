@@ -27,6 +27,7 @@ class StateWiseTrackerRepository(val application: Application) {
         callApi.enqueue(object : Callback<StateWiseData> {
             override fun onFailure(call: Call<StateWiseData>, t: Throwable) {
                 showProgress.value = false
+
                 Toast.makeText(application, "Error : ${t.message}", Toast.LENGTH_SHORT).show()
 
             }

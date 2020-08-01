@@ -22,7 +22,7 @@ class DashboardActivity : AppCompatActivity() {
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
 
-        val request = PeriodicWorkRequestBuilder<NotificationWorker>(1, TimeUnit.HOURS)
+        val request = PeriodicWorkRequestBuilder<NotificationWorker>(5, TimeUnit.HOURS)
             .addTag("Notification")
             .setConstraints(constraints)
             .build()
