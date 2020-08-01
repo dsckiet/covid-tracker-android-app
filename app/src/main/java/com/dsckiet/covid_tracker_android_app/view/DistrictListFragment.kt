@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +24,8 @@ class DistrictListFragment : Fragment() {
     lateinit var navController: NavController
     lateinit var viewModel: DistrictWiseTrackerViewModel
     lateinit var adapter: DistrictAdapter
-    var stateCode: String? = null
-    var lastUpdatedTime: String? = null
+    private var stateCode: String? = null
+    private var lastUpdatedTime: String? = null
 
 
     override fun onCreateView(
@@ -38,7 +39,7 @@ class DistrictListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        back_button.setOnClickListener {
+        back_button_district.setOnClickListener {
             navController.popBackStack()
         }
         stateCode = arguments?.getString("stateCode")

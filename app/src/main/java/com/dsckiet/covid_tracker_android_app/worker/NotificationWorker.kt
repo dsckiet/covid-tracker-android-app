@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.dsckiet.covid_tracker_android_app.R
-import com.dsckiet.covid_tracker_android_app.repository.activeGlobal
 import com.dsckiet.covid_tracker_android_app.repository.activeIndia
 import com.dsckiet.covid_tracker_android_app.repository.lastUpdated
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
@@ -24,9 +23,8 @@ class NotificationWorker(val context: Context, workerParameters: WorkerParameter
     Worker(context, workerParameters) {
 
     override fun doWork(): Result {
-        return if (activeIndia != null && lastUpdated != null && activeGlobal != null) {
+        return if (activeIndia != null && lastUpdated != null) {
             showNotification(
-                stringToNumberFormat(activeGlobal!!),
                 stringToNumberFormat(activeIndia!!),
                 getPeriod(lastUpdated!!.toDateFormat()!!)
             )
@@ -36,7 +34,7 @@ class NotificationWorker(val context: Context, workerParameters: WorkerParameter
     }
 
 
-    private fun showNotification(activeGlobal: String, activeIndia: String, time: String) {
+    private fun showNotification(activeIndia: String, time: String) {
         val intent = Intent(context, DashboardActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
@@ -49,8 +47,8 @@ class NotificationWorker(val context: Context, workerParameters: WorkerParameter
         val notificationBuilder = NotificationCompat.Builder(context, channelId)
             .setColor(ContextCompat.getColor(context, R.color.red_color_line_chart))
             .setSmallIcon(R.drawable.ic_total_patient)
-            .setContentTitle("Global Active Cases: $activeGlobal ")
-            .setContentText("India Active Cases: $activeIndia \nLast Updated $time")
+            .setContentTitle("India Active Cases: $activeIndia ")
+            .setContentText("Last Updated $time")
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setSound(defaultSoundUri)

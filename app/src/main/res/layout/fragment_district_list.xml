@@ -9,16 +9,19 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+
             android:id="@+id/collasping_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue"
             app:collapsedTitleTextAppearance="@style/Collaspedtext"
             app:contentScrim="@color/blue"
+            android:clickable="true"
             app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
 
@@ -26,13 +29,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:collapseContentDescription="Hi"
+                    android:clickable="true"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:titleTextColor="@color/white">
+
+                </androidx.appcompat.widget.Toolbar>
+
                 <ImageView
-                    android:id="@+id/back_button"
+                    android:id="@+id/back_button_district"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="26dp"
-                    android:scaleType="centerCrop"
+                    android:paddingLeft="6dp"
+                    android:foreground="?selectableItemBackground"
+                    android:scaleType="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="27dp"
+
                     app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
                 <TextView
@@ -40,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
-                    android:layout_toRightOf="@id/back_button"
+                    android:layout_toRightOf="@id/back_button_district"
                     android:fontFamily="@font/open_sans"
                     android:text="@string/covid_19_tracker"
                     android:textColor="@color/white"
@@ -55,7 +71,6 @@
                     android:layout_below="@id/appName"
                     android:layout_marginLeft="28dp"
                     android:layout_marginTop="16dp"
-                    android:text="State"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -75,14 +90,7 @@
 
             </RelativeLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:collapseContentDescription="Hi"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-                app:titleTextColor="@color/white">
 
-            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -95,6 +103,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <RelativeLayout
+            android:layout_marginTop="?android:actionBarSize"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -243,15 +252,15 @@
 
             </androidx.cardview.widget.CardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_view_district_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/card_view"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/listitem_complete_list" />
-                </RelativeLayout>
-            </androidx.core.widget.NestedScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_district_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_view"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/listitem_complete_list" />
         </RelativeLayout>
+        <!--            </androidx.core.widget.NestedScrollView>-->
+        <!--        </RelativeLayout>-->
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

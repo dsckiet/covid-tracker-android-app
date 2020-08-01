@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.IndiaFragment"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    tools:context=".view.IndiaFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -13,14 +13,14 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            app:title="Covid Tracker"
-            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
-            app:collapsedTitleTextAppearance="@style/Collaspedtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue"
+            app:collapsedTitleTextAppearance="@style/Collaspedtext"
             app:contentScrim="@color/blue"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed"
+            app:title="Covid Tracker">
 
 
             <RelativeLayout
@@ -93,11 +93,11 @@
             </RelativeLayout>
 
             <androidx.appcompat.widget.Toolbar
-                app:collapseContentDescription="Hi"
-                app:titleTextColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+                app:collapseContentDescription="Hi"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -105,13 +105,13 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -130,10 +130,10 @@
                     android:orientation="vertical">
 
                     <GridLayout
-                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="12dp"
+                        android:layout_marginTop="20dp"
                         android:layout_weight="1"
                         android:alignmentMode="alignMargins"
                         android:columnCount="2"
@@ -342,11 +342,11 @@
                                         android:layout_height="match_parent" />
 
                                     <TextView
-                                        android:layout_marginTop="2dp"
                                         android:id="@+id/confirm_text"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="6dp"
+                                        android:layout_marginTop="2dp"
                                         android:layout_marginBottom="1dp"
                                         android:text="Confirmed"
                                         android:textColor="@color/red_color_line_chart"
@@ -420,6 +420,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="16dp"
+                                android:layout_marginTop="4dp"
                                 android:text="All States/UT"
                                 android:textColor="@color/dark_blue"
                                 android:textSize="18sp"
@@ -448,8 +449,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_rowWeight="1"
                                     android:layout_columnWeight="1"
-                                    android:gravity="start|center_vertical"
-                                    android:text="Country"
+                                    android:gravity="center"
+                                    android:text="States"
                                     android:textColor="@color/dark_blue"
                                     android:textSize="@dimen/sixteen" />
 
@@ -461,6 +462,7 @@
                                     android:layout_columnWeight="1"
                                     android:gravity="center"
                                     android:text="A"
+                                    android:layout_marginLeft="16dp"
                                     android:textColor="@color/red"
                                     android:textSize="@dimen/sixteen" />
 

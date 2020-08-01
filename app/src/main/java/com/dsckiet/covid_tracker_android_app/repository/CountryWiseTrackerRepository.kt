@@ -8,7 +8,7 @@ import com.dsckiet.covid_tracker_android_app.network.CoronaGlobalTrackerClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-var activeGlobal: String? = null
+
 class CountryWiseTrackerRepository(val application: Application) {
     val showCoronaCountryDetails = MutableLiveData<CountryWiseData>()
     val showProgress = MutableLiveData<Boolean>()
@@ -29,8 +29,7 @@ class CountryWiseTrackerRepository(val application: Application) {
             ) {
                 showProgress.value = false
                 showCoronaCountryDetails.value = response.body()
-                activeGlobal =
-                    (response.body()!!.global.totalConfirmed - response.body()!!.global.totalDeaths - response.body()!!.global.totalRecovered).toString()
+
             }
 
         })

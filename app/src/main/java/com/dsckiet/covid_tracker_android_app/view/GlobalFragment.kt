@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,19 +16,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.adapter.CountriesAdapter
-import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
-import com.dsckiet.covid_tracker_android_app.utils.getPeriod
-import com.dsckiet.covid_tracker_android_app.utils.globalTimeDateFormat
-import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
+import com.dsckiet.covid_tracker_android_app.utils.*
 import com.dsckiet.covid_tracker_android_app.viewModel.CountryWiseTrackerViewModel
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import kotlinx.android.synthetic.main.frag_globe.*
-import kotlinx.android.synthetic.main.frag_globe.last_updated
-import kotlinx.android.synthetic.main.frag_globe.swipeRefreshLayout
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlin.math.roundToLong
+
 
 class GlobalFragment : Fragment() {
 
@@ -82,11 +76,23 @@ class GlobalFragment : Fragment() {
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
         viewModel.getCoronaCountryDetails()
         recycler_view.adapter = adapter
+
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayout.isRefreshing = it
         })
         viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
+            val mv = CustomMarkerView(
+                requireContext(),
+                com.dsckiet.covid_tracker_android_app.R.layout.custom_marker_view
+            )
+
+// set the marker to the chart
+
+// set the marker to the chart
+            pieChart.setDrawMarkers(true)
+            pieChart.setDrawEntryLabels(true)
+            // pieChart.markerView = mv
             pieChart.setUsePercentValues(true)
             pieChart.setExtraOffsets(2f, 3f, 3f, 2f)
             pieChart.dragDecelerationFrictionCoef = 0.95f
@@ -126,27 +132,28 @@ class GlobalFragment : Fragment() {
             )
             a.add(PieEntry(it.global.totalDeaths.toFloat(), "Deceased"))
 
+            if (!swipeRefreshLayout.isRefreshing) {
+                val data = PieDataSet(a, "Stats")
+                data.formSize = 2f
+                data.valueTextSize = 0.2f
+                data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
+                data.sliceSpace = 3f
+                data.selectionShift = 5f
+                data.color = Color.CYAN
+                data.isHighlightEnabled = true
 
-            val data = PieDataSet(a, "Stats")
-            data.formSize = 2f
-            data.valueTextSize = 0.2f
-            data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
-            data.sliceSpace = 3f
-            data.selectionShift = 5f
-            data.color = Color.CYAN
-
-            val pdata = PieData((data))
-            data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
-            pdata.setValueTextSize(10f)
-            pieChart.centerText =
-                stringToNumberFormat(it.global.totalConfirmed.toString()) + "\nTotal Cases"
-            pieChart.setCenterTextSizePixels(30f)
-            pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
-            pieChart.setCenterTextSize(12f)
-            pdata.setValueTextColor(Color.YELLOW)
-            pieChart.animateY(2000)
-            pieChart.data = pdata
-
+                val pdata = PieData((data))
+                data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
+                pdata.setValueTextSize(10f)
+                pieChart.centerText =
+                    stringToNumberFormat(it.global.totalConfirmed.toString()) + "\nTotal Cases"
+                pieChart.setCenterTextSizePixels(30f)
+                pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
+                pieChart.setCenterTextSize(12f)
+                pdata.setValueTextColor(Color.YELLOW)
+                pieChart.animateY(2000)
+                pieChart.data = pdata
+            }
             recovered_percent.text =
                 ((it.global.totalRecovered.toDouble() / it.global.totalConfirmed.toDouble()) * 100).roundToLong()
                     .toString() + "%"

@@ -13,10 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.adapter.StateAdapter
-import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
-import com.dsckiet.covid_tracker_android_app.utils.getPeriod
-import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
-import com.dsckiet.covid_tracker_android_app.utils.toDateFormat
+import com.dsckiet.covid_tracker_android_app.utils.*
 import com.dsckiet.covid_tracker_android_app.viewModel.StateWiseTrackerViewModel
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -118,6 +115,10 @@ class IndiaFragment : Fragment() {
                 vl.setDrawCircleHole(true)
                 vl.setDrawValues(false)
                 vl.setDrawFilled(true)
+                val mv = CustomMarkerView(
+                    requireContext(),
+                    com.dsckiet.covid_tracker_android_app.R.layout.custom_marker_view
+                )
 
                 vl.color = Color.parseColor("#FFE0E6")
                 vl.fillColor = Color.parseColor("#FFE0E6")
@@ -155,10 +156,12 @@ class IndiaFragment : Fragment() {
                     (Color.parseColor("#E86985"))
                 line_chart.axisRight.textColor =
                     (Color.parseColor("#E86985"))
+                line_chart.isDoubleTapToZoomEnabled = false
+                line_chart.setScaleEnabled(false)
 
-
-                line_chart.setTouchEnabled(false)
+                line_chart.setTouchEnabled(true)
                 line_chart.setPinchZoom(false)
+                line_chart.markerView = mv
 
             }
         })
