@@ -11,9 +11,9 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:lottie_rawRes="@raw/covid_splash"
+        app:lottie_rawRes="@raw/splash_anim"
         app:lottie_autoPlay="true"
-        app:lottie_speed="4"
-        app:lottie_loop="false" />
+        app:lottie_speed="0.6"
+        app:lottie_loop="true" />
 
 </LinearLayout>
