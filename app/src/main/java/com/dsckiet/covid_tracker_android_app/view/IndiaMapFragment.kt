@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,10 +22,12 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
+import com.richpath.RichPath
 import kotlinx.android.synthetic.main.frag_india.*
+import kotlinx.android.synthetic.main.fragment_india_map.*
 
 
-class IndiaFragment : Fragment() {
+class IndiaMapFragment : Fragment() {
 
     private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateAdapter
@@ -32,6 +35,22 @@ class IndiaFragment : Fragment() {
     private val entries = ArrayList<Entry>()
     private val xAxisLabel: ArrayList<String> = ArrayList()
 
+    private val bgColorList = listOf<Int>(
+        com.dsckiet.covid_tracker_android_app.R.color.light_blue,
+        com.dsckiet.covid_tracker_android_app.R.color.light_red,
+        com.dsckiet.covid_tracker_android_app.R.color.light_green,
+        com.dsckiet.covid_tracker_android_app.R.color.light_grey
+    )
+    private val baseColorList = listOf<Int>(
+        com.dsckiet.covid_tracker_android_app.R.color.blue,
+        com.dsckiet.covid_tracker_android_app.R.color.red,
+        com.dsckiet.covid_tracker_android_app.R.color.green,
+        com.dsckiet.covid_tracker_android_app.R.color.grey
+    )
+
+
+    private val bgColorGraph = bgColorList[0]
+    private val baseColorGraph = baseColorList[0]
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +58,7 @@ class IndiaFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(
-            com.dsckiet.covid_tracker_android_app.R.layout.frag_india,
+            com.dsckiet.covid_tracker_android_app.R.layout.fragment_india_map,
             container,
             false
         )
@@ -49,26 +68,134 @@ class IndiaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
-            if (checkedId == com.dsckiet.covid_tracker_android_app.R.id.rb_globe)
-                navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_frag_Globe)
-        }
-        next_screen_btn.setOnClickListener {
-            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_stateListFragment)
-        }
-        india_map_btn.setOnClickListener{
-            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_indiaMapFragment)
-        }
+//        radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
+//            if (checkedId == com.dsckiet.covid_tracker_android_app.R.id.rb_globe)
+//                navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_frag_Globe)
+//        }
+//        next_screen_btn.setOnClickListener {
+//            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_stateListFragment)
+//        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getData()
-        swipeRefreshLayout.setOnRefreshListener {
-            getData()
-        }
+//        getData()
+//        swipeRefreshLayout.setOnRefreshListener {
+//            getData()
+//        }
+        setOnClickListener()
     }
 
+    private fun setOnClickListener() {
+        val yellowColor = ContextCompat.getColor(requireContext(), baseColorGraph)
+        ic_india_map.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
+            unColorRest()
+            richPath.fillColor = yellowColor
+            state_name.setTextColor(yellowColor)
+            when (richPath.name) {
+                "Andhra Pradesh" -> {
+                    state_name.text = "Andhra Pradhesh"
+                }
+                "Tamil Nadu" -> {
+                    state_name.text = "Tamil Nadu"
+                }
+                "Rajasthan" -> {
+                    state_name.text = "Rajasthan"
+                }
+                "Andaman and Nicobar" -> {
+                    state_name.text = "Andaman and Nicobar"
+                }
+                "Arunachal Pradesh" -> {
+                    state_name.text = "Arunachal Pradesh"
+                }
+                "Assam" -> {
+                    state_name.text = "Assam"
+                }
+                "Bihar" -> {
+                    state_name.text = "Bihar"
+
+                }
+                "Chhattisgarh" -> {
+                    state_name.text = "Chhattisgarh"
+                }
+                "Goa" -> {
+                    state_name.text = "Goa"
+                }
+                "Gujarat" -> {
+                    state_name.text = "Gujarat"
+                }
+                "Himachal Pradesh" -> {
+                    state_name.text = "Himachal Pradesh"
+                }
+                "Haryana" -> {
+                    state_name.text = "Haryana"
+                }
+                "Jharkhand" -> {
+                    state_name.text = "Jharkhand"
+                }
+                "Jammu and Kashmir" -> {
+                    state_name.text = "Jammu and Kashmir"
+                }
+                "Karnataka" -> {
+                    state_name.text = "Karnataka"
+                }
+                "Kerala" -> {
+                    state_name.text = "Kerala"
+                }
+                "Maharashtra" -> {
+                    state_name.text = "Maharashtra"
+                }
+                "Meghalaya" -> {
+                    state_name.text = "Meghalaya"
+                }
+                "Manipur" -> {
+                    state_name.text = "Manipur"
+                }
+                "Madhya Pradesh" -> {
+                    state_name.text = "Madhya Pradesh"
+                }
+                "Mizoram" -> {
+                    state_name.text = "Mizoram"
+                }
+                "Odisha" -> {
+                    state_name.text = "Odisha"
+                }
+                "Punjab" -> {
+                    state_name.text = "Punjab"
+                }
+                "Sikkim" -> {
+                    state_name.text = "Sikkim"
+                }
+                "Telangana" -> {
+                    state_name.text = "Telangana"
+                }
+                "Tamil Nadu" -> {
+                    state_name.text = "Tamil Nadu"
+                }
+                "Tripura" -> {
+                    state_name.text = "Tripura"
+                }
+                "Uttar Pradesh" -> {
+                    state_name.text = "Uttar Pradesh"
+                }
+                "Uttarakhand" -> {
+                    state_name.text = "Uttarakhand"
+                }
+                "West Bengal" -> {
+                    state_name.text = "West Bengal"
+                }
+                "Nagaland" -> {
+                    state_name.text = "Nagaland"
+                }
+            }
+        })
+    }
+
+    private fun unColorRest() {
+        for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+            richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorGraph)
+        }
+    }
 
     private fun getData() {
         viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)

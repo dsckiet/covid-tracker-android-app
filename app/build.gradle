@@ -123,4 +123,5 @@ dependencies {
 
     implementation "com.airbnb.android:lottie:3.4.1"
 
+    implementation 'com.github.tarek360.RichPath:animator:0.1.1'
 }
