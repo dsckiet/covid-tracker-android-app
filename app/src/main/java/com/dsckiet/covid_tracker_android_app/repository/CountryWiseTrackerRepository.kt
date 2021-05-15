@@ -1,6 +1,8 @@
 package com.dsckiet.covid_tracker_android_app.repository
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.dsckiet.covid_tracker_android_app.models.CountryWiseData
@@ -23,12 +25,14 @@ class CountryWiseTrackerRepository(val application: Application) {
 
             }
 
+            @SuppressLint("LogNotTimber")
             override fun onResponse(
                 call: Call<CountryWiseData>,
                 response: Response<CountryWiseData>
             ) {
                 showProgress.value = false
-                showCoronaCountryDetails.value = response.body()
+                //showCoronaCountryDetails.value = response.body()
+                Log.d("Tag", "data = ${response.body()}")
 
             }
 
