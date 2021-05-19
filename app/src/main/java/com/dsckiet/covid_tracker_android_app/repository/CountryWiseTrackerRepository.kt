@@ -31,7 +31,7 @@ class CountryWiseTrackerRepository(val application: Application) {
                 response: Response<CountryWiseData>
             ) {
                 showProgress.value = false
-                //showCoronaCountryDetails.value = response.body()
+                showCoronaCountryDetails.value = response.body()
                 Log.d("Tag", "data = ${response.body()}")
 
             }

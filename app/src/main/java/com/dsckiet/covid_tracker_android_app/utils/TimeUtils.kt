@@ -40,7 +40,7 @@ fun globalTimeDateFormat(time: String): Date? {
         "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US
     )
     format.timeZone = TimeZone.getTimeZone("UTC")
-    return format.parse(time)
+    return format.parse(time.substring(0, time.length - 5)+'Z')
 
 
 }
