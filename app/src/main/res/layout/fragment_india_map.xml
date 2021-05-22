@@ -165,7 +165,7 @@
                     android:id="@+id/category_deaths_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Deaths"
+                    android:text="@string/deaths"
                     android:textColor="@color/grey"
                     android:gravity="center_horizontal" />
             </LinearLayout>
