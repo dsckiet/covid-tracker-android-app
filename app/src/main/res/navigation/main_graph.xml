@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/frag_Globe"
-        android:name="com.dsckiet.covid_tracker_android_app.view.GlobalFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.global.GlobalFragment"
         android:label="frag_globe"
         tools:layout="@layout/fragment_global">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/frag_India"
-        android:name="com.dsckiet.covid_tracker_android_app.view.IndiaFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.india.IndiaFragment"
         android:label="frag_india"
         tools:layout="@layout/fragment_india">
         <action
@@ -42,12 +42,12 @@
     </fragment>
     <fragment
         android:id="@+id/countryListFragment"
-        android:name="com.dsckiet.covid_tracker_android_app.view.CountryListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.global.CountryListFragment"
         android:label="fragment_country_list"
         tools:layout="@layout/fragment_country_list" />
     <fragment
         android:id="@+id/stateListFragment"
-        android:name="com.dsckiet.covid_tracker_android_app.view.StateListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.india.StateListFragment"
         android:label="fragment_state_list"
         tools:layout="@layout/fragment_state_list">
         <action
@@ -56,12 +56,12 @@
     </fragment>
     <fragment
         android:id="@+id/districtListFragment"
-        android:name="com.dsckiet.covid_tracker_android_app.view.DistrictListFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.india.DistrictListFragment"
         android:label="fragment_district_list"
         tools:layout="@layout/fragment_district_list" />
     <fragment
         android:id="@+id/indiaMapFragment"
-        android:name="com.dsckiet.covid_tracker_android_app.view.IndiaMapFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.ui.mapview.IndiaMapFragment"
         android:label="IndiaMapFragment" >
         <action
             android:id="@+id/action_indiaMapFragment_to_frag_India"

@@ -12,12 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.dsckiet.covid_tracker_android_app.R
-import com.dsckiet.covid_tracker_android_app.repository.activeIndia
-import com.dsckiet.covid_tracker_android_app.repository.lastUpdated
+import com.dsckiet.covid_tracker_android_app.datastore.repositories.activeIndia
+import com.dsckiet.covid_tracker_android_app.datastore.repositories.lastUpdated
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
 import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
 import com.dsckiet.covid_tracker_android_app.utils.toDateFormat
-import com.dsckiet.covid_tracker_android_app.view.DashboardActivity
+import com.dsckiet.covid_tracker_android_app.ui.global.DashboardActivity
 
 class NotificationWorker(val context: Context, workerParameters: WorkerParameters) :
     Worker(context, workerParameters) {
