@@ -4,14 +4,26 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#ffffff</color>
-    <color name="blue">#5baeff</color>
-    <color name="green">#36B544</color>
-    <color name="red">#fe8787</color>
-    <color name="grey">#797979</color>
+
     <color name="dark_blue">#2072ba</color>
     <color name="blue_text_line_chart">#0051A2</color>
     <color name="next_screen_button">#477FB1</color>
     <color name="red_color_line_chart">#FF063A</color>
     <color name="line_chart_text">#E86985</color>
     <color name="last_updated_time">#005198</color>
+
+
+
+    <color name="colorMap">#fff</color>
+
+    <color name="blue">#5baeff</color>
+    <color name="light_blue">#e6f2ff</color>
+    <color name="green">#36B544</color>
+    <color name="light_green">#ebf9ed</color>
+    <color name="red">#fe8787</color>
+    <color name="light_red">#ffe6e6</color>
+    <color name="grey">#797979</color>
+    <color name="light_grey">#f2f2f2</color>
+
+
 </resources>

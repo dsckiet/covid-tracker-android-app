@@ -17,11 +17,11 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_frag_Globe_to_countryListFragment"
-            app:destination="@id/countryListFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/countryListFragment" />
+<!--        app:enterAnim="@anim/fragment_fade_enter"-->
+<!--        app:exitAnim="@anim/fragment_fade_exit"-->
+<!--        app:popEnterAnim="@anim/fragment_fade_enter"-->
+<!--        app:popExitAnim="@anim/fragment_fade_exit"-->
     </fragment>
     <fragment
         android:id="@+id/frag_India"
@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_frag_India_to_stateListFragment"
             app:destination="@id/stateListFragment" />
+        <action
+            android:id="@+id/action_frag_India_to_indiaMapFragment"
+            app:destination="@id/indiaMapFragment" />
     </fragment>
     <fragment
         android:id="@+id/countryListFragment"
@@ -56,4 +59,12 @@
         android:name="com.dsckiet.covid_tracker_android_app.view.DistrictListFragment"
         android:label="fragment_district_list"
         tools:layout="@layout/fragment_district_list" />
+    <fragment
+        android:id="@+id/indiaMapFragment"
+        android:name="com.dsckiet.covid_tracker_android_app.view.IndiaMapFragment"
+        android:label="IndiaMapFragment" >
+        <action
+            android:id="@+id/action_indiaMapFragment_to_frag_India"
+            app:destination="@id/frag_India" />
+    </fragment>
 </navigation>

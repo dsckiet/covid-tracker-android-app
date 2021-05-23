@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 
@@ -51,15 +50,19 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Support libraries & Android KTX
     implementation "androidx.appcompat:appcompat:$version_appcompat"
-    implementation "androidx.fragment:fragment:$version_fragment"
+    implementation "androidx.fragment:fragment-ktx:$version_fragment"
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation "androidx.core:core-ktx:$version_core"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.preference:preference-ktx:$version_preference"
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$version_swiperefreshlayout"
     implementation "com.google.android.material:material:$version_material"
-    //noinspection GradleCompatible
-    implementation "com.android.support:design:28.0.0-beta01"
+
+    // NoInspection GradleCompatible
+    implementation "com.google.android.material:material:$version_material"
 
     //Smooth Bottom Navigation View
     implementation "com.github.ibrahimsn98:SmoothBottomBar:$version_smooth_bottom_bar"
@@ -68,34 +71,35 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
 
-    // Coroutines for getting off the UI thread
+    // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
 
-    // Retrofit for networking
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
-    // Moshi for parsing the JSON format
+    // Moshi Parser
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi"
 
-    // Joda time library for dealing with time
+    // Joda time library
     implementation "joda-time:joda-time:$version_joda"
 
-    // ViewModel and LiveData (arch components)
+    // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
-    // Koin Dependency Injection
-    implementation "org.koin:koin-core:$version_koin"
-    implementation "org.koin:koin-android:$version_koin"
-    implementation "org.koin:koin-android-scope:$version_koin"
-    implementation "org.koin:koin-android-viewmodel:$version_koin"
+    // Dagger Dependency Injection
+    implementation "com.google.dagger:dagger:$version_dagger"
+    kapt "com.google.dagger:dagger-compiler:$version_dagger"
+    implementation "com.google.dagger:dagger-android:$version_dagger_android"
+    implementation "com.google.dagger:dagger-android-support:$version_dagger_android"
+    kapt "com.google.dagger:dagger-android-processor:$version_dagger_android"
 
     // Logging
     implementation "com.jakewharton.timber:timber:$version_timber"
@@ -108,19 +112,15 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
 
     // WorkManager
-    implementation "android.arch.work:work-runtime-ktx:$version_work"
+    implementation "androidx.work:work-runtime-ktx:$version_work"
 
-    implementation 'com.android.support:multidex:1.0.3'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation "androidx.multidex:multidex:$version_multidex"
+    // MP Android Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-//ViewPager2
+    //ViewPager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-
-    implementation "androidx.work:work-runtime-ktx:$workmanager_version"
-
+    // Lottie Animations
     implementation "com.airbnb.android:lottie:3.4.1"
-
+    // Rich Path Vector Animator
+    implementation "com.github.tarek360.RichPath:animator:$version_richpath"
 }
