@@ -1,266 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.StateListFragment"
-    android:background="#ffffff">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:clickable="true"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".view.StateListFragment"
+        android:background="#ffffff">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-
-            android:id="@+id/collasping_toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
-            app:collapsedTitleTextAppearance="@style/Collaspedtext"
-            app:contentScrim="@color/blue"
-            android:clickable="true"
-            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed">
+            android:focusable="true">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
 
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:collapseContentDescription="Hi"
-                    android:clickable="true"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-                    app:titleTextColor="@color/white">
-
-                </androidx.appcompat.widget.Toolbar>
-
-                <ImageView
-                    android:id="@+id/back_button_district"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:paddingLeft="6dp"
-                    android:foreground="?selectableItemBackground"
-                    android:scaleType="center"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginTop="27dp"
-
-                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
-
-                <TextView
-                    android:id="@+id/appName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:layout_toRightOf="@id/back_button_district"
-                    android:fontFamily="@font/open_sans"
-                    android:text="@string/covid_19_tracker"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="normal|bold" />
-
-
-                <TextView
-                    android:id="@+id/state_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/appName"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="16dp"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/last_updated"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/state_name"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingBottom="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="normal|bold" />
-
-            </RelativeLayout>
-
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <RelativeLayout
-            android:layout_marginTop="?android:actionBarSize"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_app_bg" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:alignmentMode="alignMargins"
-                    android:columnCount="5"
-                    android:rowCount="1">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1.3"
-                        android:gravity="center"
-                        android:paddingBottom="15dp"
-                        android:text="District"
-                        android:textColor="@color/grey"
-                        android:textSize="@dimen/sixteen"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/confirmed_img"
-                            android:layout_width="@dimen/forty"
-                            android:layout_height="@dimen/forty"
-                            android:layout_margin="8dp"
-                            android:src="@drawable/ic_total_patient"
-                            android:tint="@color/blue" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="CONFIRMED"
-                            android:textColor="@color/blue"
-                            android:textSize="@dimen/ten"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/active_img"
-                            android:layout_width="@dimen/forty"
-                            android:layout_height="@dimen/forty"
-                            android:layout_margin="8dp"
-                            android:src="@drawable/ic_active_patient"
-                            android:tint="@color/red" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ACTIVE"
-                            android:textColor="@color/red"
-                            android:textSize="@dimen/ten"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/recovered_img"
-                            android:layout_width="@dimen/forty"
-                            android:layout_height="@dimen/forty"
-                            android:layout_margin="8dp"
-                            android:src="@drawable/ic_recover"
-                            android:tint="@color/green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="RECOVERED"
-                            android:textColor="@color/green"
-                            android:textSize="@dimen/ten"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/deaths_img"
-                            android:layout_width="@dimen/forty"
-                            android:layout_height="@dimen/forty"
-                            android:layout_margin="8dp"
-
-                            android:src="@drawable/ic_deaths"
-                            android:tint="@color/grey" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="DECEASED"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/ten"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </GridLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_district_list"
+                android:id="@+id/collasping_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/card_view"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/listitem_complete_list" />
-        </RelativeLayout>
-        <!--            </androidx.core.widget.NestedScrollView>-->
-        <!--        </RelativeLayout>-->
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                android:background="@color/blue"
+                app:collapsedTitleTextAppearance="@style/collapsed_text"
+                app:contentScrim="@color/blue"
+                android:clickable="true"
+                app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed"
+                android:focusable="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:collapseContentDescription="Hi"
+                        android:clickable="true"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                        app:titleTextColor="@color/white"
+                        android:focusable="true">
+
+                    </androidx.appcompat.widget.Toolbar>
+
+                    <ImageView
+                        android:id="@+id/back_button_district"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:paddingLeft="6dp"
+                        android:foreground="?selectableItemBackground"
+                        android:scaleType="center"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginTop="27dp"
+                        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+                        android:paddingStart="6dp"
+                        android:layout_marginStart="22dp" />
+
+                    <TextView
+                        android:id="@+id/appName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:layout_toRightOf="@id/back_button_district"
+                        android:fontFamily="@font/open_sans"
+                        android:text="@string/covid_19_tracker"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="normal|bold"
+                        android:layout_toEndOf="@id/back_button_district" />
+
+
+                    <TextView
+                        android:id="@+id/state_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/appName"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="28dp" />
+
+                    <TextView
+                        android:id="@+id/last_updated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/state_name"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingBottom="4dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="normal|bold"
+                        android:layout_marginStart="28dp" />
+
+                </RelativeLayout>
+
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <RelativeLayout
+                android:layout_marginTop="?android:actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_app_bg" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="5"
+                        android:rowCount="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1.3"
+                            android:gravity="center"
+                            android:paddingBottom="15dp"
+                            android:text="@string/district"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sixteen"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/confirmed_img"
+                                android:layout_width="@dimen/forty"
+                                android:layout_height="@dimen/forty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_total_patient"
+                                app:tint="@color/blue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/confirmed"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/ten"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/active_img"
+                                android:layout_width="@dimen/forty"
+                                android:layout_height="@dimen/forty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_active_patient"
+                                app:tint="@color/red" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/active"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/ten"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/recovered_img"
+                                android:layout_width="@dimen/forty"
+                                android:layout_height="@dimen/forty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_recover"
+                                app:tint="@color/green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/recovered"
+                                android:textColor="@color/green"
+                                android:textSize="@dimen/ten"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/deaths_img"
+                                android:layout_width="@dimen/forty"
+                                android:layout_height="@dimen/forty"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/ic_deaths"
+                                app:tint="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deaths_caps"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/ten"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </GridLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_district_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_view"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/listitem_complete_list" />
+            </RelativeLayout>
+            <!--            </androidx.core.widget.NestedScrollView>-->
+            <!--        </RelativeLayout>-->
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

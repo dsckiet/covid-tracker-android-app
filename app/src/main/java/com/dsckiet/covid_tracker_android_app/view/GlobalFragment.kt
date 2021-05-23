@@ -10,36 +10,33 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.adapter.CountriesAdapter
+import com.dsckiet.covid_tracker_android_app.databinding.FragmentGlobalBinding
 import com.dsckiet.covid_tracker_android_app.utils.*
 import com.dsckiet.covid_tracker_android_app.viewModel.CountryWiseTrackerViewModel
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import kotlinx.android.synthetic.main.frag_globe.*
+import java.util.*
 import kotlin.math.roundToLong
 
 
-class GlobalFragment : Fragment() {
+class GlobalFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var viewModel: CountryWiseTrackerViewModel
     private lateinit var adapter: CountriesAdapter
     private lateinit var navController: NavController
+    private lateinit var binding: FragmentGlobalBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(
-            com.dsckiet.covid_tracker_android_app.R.layout.frag_globe,
-            container,
-            false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_global, container, false)
+        return binding.root
     }
 
 
@@ -49,12 +46,12 @@ class GlobalFragment : Fragment() {
         navController = Navigation.findNavController(view)
         requireActivity().window.statusBarColor = Color.parseColor("#5baeff")
 
-        radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
-            if (checkedId == com.dsckiet.covid_tracker_android_app.R.id.rb_india)
-                navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_Globe_to_frag_India)
+        binding.radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
+            if (checkedId == R.id.rb_india)
+                navController.navigate(R.id.action_frag_Globe_to_frag_India)
         }
-        next_screen_btn.setOnClickListener {
-            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_Globe_to_countryListFragment)
+        binding.nextScreenBtn.setOnClickListener {
+            navController.navigate(R.id.action_frag_Globe_to_countryListFragment)
         }
 
 
@@ -63,7 +60,7 @@ class GlobalFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         getData()
-        swipeRefreshLayout.setOnRefreshListener {
+        binding.swipeRefreshLayout.setOnRefreshListener {
             getData()
         }
 
@@ -75,10 +72,10 @@ class GlobalFragment : Fragment() {
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
         viewModel.getCoronaCountryDetails()
-        recycler_view.adapter = adapter
+        binding.recyclerView.adapter = adapter
 
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
-            swipeRefreshLayout.isRefreshing = it
+            binding.swipeRefreshLayout.isRefreshing = it
         })
         viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
@@ -90,15 +87,15 @@ class GlobalFragment : Fragment() {
 // set the marker to the chart
 
 // set the marker to the chart
-            pieChart.setDrawMarkers(true)
-            pieChart.setDrawEntryLabels(true)
+            binding.pieChart.setDrawMarkers(true)
+            binding.pieChart.setDrawEntryLabels(true)
             // pieChart.markerView = mv
-            pieChart.setUsePercentValues(true)
-            pieChart.setExtraOffsets(2f, 3f, 3f, 2f)
-            pieChart.dragDecelerationFrictionCoef = 0.95f
-            pieChart.transparentCircleRadius = 61f
-            pieChart.description.isEnabled = false
-            pieChart.legend.isEnabled = false
+            binding.pieChart.setUsePercentValues(true)
+            binding.pieChart.setExtraOffsets(2f, 3f, 3f, 2f)
+            binding.pieChart.dragDecelerationFrictionCoef = 0.95f
+            binding.pieChart.transparentCircleRadius = 61f
+            binding.pieChart.description.isEnabled = false
+            binding.pieChart.legend.isEnabled = false
 
             val a: ArrayList<PieEntry> = ArrayList()
             val activeCases =
@@ -132,7 +129,7 @@ class GlobalFragment : Fragment() {
             )
             a.add(PieEntry(it.global.totalDeaths.toFloat(), "Deceased"))
 
-            if (!swipeRefreshLayout.isRefreshing) {
+            if (!binding.swipeRefreshLayout.isRefreshing) {
                 val data = PieDataSet(a, "Stats")
                 data.formSize = 2f
                 data.valueTextSize = 0.2f
@@ -145,34 +142,34 @@ class GlobalFragment : Fragment() {
                 val pdata = PieData((data))
                 data.colors = mutableListOf(colorFirst, colorSecond, colorThird)
                 pdata.setValueTextSize(10f)
-                pieChart.centerText =
+                binding.pieChart.centerText =
                     stringToNumberFormat(it.global.totalConfirmed.toString()) + "\nTotal Cases"
-                pieChart.setCenterTextSizePixels(30f)
-                pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
-                pieChart.setCenterTextSize(12f)
+                binding.pieChart.setCenterTextSizePixels(30f)
+                binding.pieChart.setCenterTextColor(com.dsckiet.covid_tracker_android_app.R.color.grey)
+                binding.pieChart.setCenterTextSize(12f)
                 pdata.setValueTextColor(Color.YELLOW)
-                pieChart.animateY(2000)
-                pieChart.data = pdata
+                binding.pieChart.animateY(2000)
+                binding.pieChart.data = pdata
             }
-            recovered_percent.text =
+            binding.recoveredPercent.text =
                 ((it.global.totalRecovered.toDouble() / it.global.totalConfirmed.toDouble()) * 100).roundToLong()
                     .toString() + "%"
-            deceased_percent.text =
+            binding.deceasedPercent.text =
                 ((it.global.totalDeaths.toDouble() / it.global.totalConfirmed.toDouble()) * 100).roundToLong()
                     .toString() + "%"
-            active_percent.text =
+            binding.activePercent.text =
                 ((activeCases.toDouble() / it.global.totalConfirmed.toDouble()) * 100).roundToLong()
                     .toString() + "%"
 
             val lastUpdatedTime = "Last Updated " + getPeriod(globalTimeDateFormat(it.date)!!)
-            last_updated.text = lastUpdatedTime
-            confirmed_count.text = stringToNumberFormat(it.global.totalConfirmed.toString())
-            recover_count.text = stringToNumberFormat(it.global.totalRecovered.toString())
-            rip_count.text = stringToNumberFormat(it.global.totalDeaths.toString())
-            active_count.text = stringToNumberFormat(activeCases.toString())
-            confirmed_arrow_number.text = stringToNumberFormat(it.global.newConfirmed.toString())
-            rip_arrow_number.text = stringToNumberFormat(it.global.newDeaths.toString())
-            recover_arrow_number.text = stringToNumberFormat(it.global.newRecovered.toString())
+            binding.lastUpdated.text = lastUpdatedTime
+            binding.confirmedCount.text = stringToNumberFormat(it.global.totalConfirmed.toString())
+            binding.recoverCount.text = stringToNumberFormat(it.global.totalRecovered.toString())
+            binding.ripCount.text = stringToNumberFormat(it.global.totalDeaths.toString())
+            binding.activeCount.text = stringToNumberFormat(activeCases.toString())
+            binding.confirmedArrowNumber.text = stringToNumberFormat(it.global.newConfirmed.toString())
+            binding.ripArrowNumber.text = stringToNumberFormat(it.global.newDeaths.toString())
+            binding.recoverArrowNumber.text = stringToNumberFormat(it.global.newRecovered.toString())
             adapter.setCountryWiseTracker(it.countries)
         })
     }

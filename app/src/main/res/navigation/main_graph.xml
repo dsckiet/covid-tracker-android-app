@@ -9,7 +9,7 @@
         android:id="@+id/frag_Globe"
         android:name="com.dsckiet.covid_tracker_android_app.view.GlobalFragment"
         android:label="frag_globe"
-        tools:layout="@layout/frag_globe">
+        tools:layout="@layout/fragment_global">
         <action
             android:id="@+id/action_frag_Globe_to_frag_India"
             app:destination="@id/frag_India"
@@ -27,7 +27,7 @@
         android:id="@+id/frag_India"
         android:name="com.dsckiet.covid_tracker_android_app.view.IndiaFragment"
         android:label="frag_india"
-        tools:layout="@layout/frag_india">
+        tools:layout="@layout/fragment_india">
         <action
             android:id="@+id/action_frag_India_to_frag_Globe"
             app:destination="@id/frag_Globe"

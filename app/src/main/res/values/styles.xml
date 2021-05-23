@@ -92,7 +92,7 @@
         <item name="android:textSize">0sp</item>
     </style>
 
-    <style name="Collaspedtext" parent="AppTheme">
+    <style name="collapsed_text" parent="AppTheme">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">normal|bold</item>
     </style>

@@ -23,7 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.richpath.RichPath
-import kotlinx.android.synthetic.main.frag_india.*
+import kotlinx.android.synthetic.main.fragment_india.*
 import kotlinx.android.synthetic.main.fragment_india_map.*
 
 

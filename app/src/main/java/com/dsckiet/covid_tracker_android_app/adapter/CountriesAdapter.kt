@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.models.Country
 import com.dsckiet.covid_tracker_android_app.utils.stringToNumberFormat
+import kotlinx.android.synthetic.main.fragment_india.view.tv_r
 import kotlinx.android.synthetic.main.listitem_countries.view.*
+import kotlinx.android.synthetic.main.listitem_countries.view.A
+import kotlinx.android.synthetic.main.listitem_countries.view.D
 
 class CountriesAdapter(private val context: Context) :
     RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
@@ -65,7 +68,7 @@ class CountriesAdapter(private val context: Context) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val active: TextView = view.A
-        val recovered: TextView = view.R
+        val recovered: TextView = view.tv_r
         val death: TextView = view.D
         val stateName: TextView = view.area
 

@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <GridLayout
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="1dp"
-        android:layout_weight="1"
-        android:alignmentMode="alignMargins"
-        android:columnCount="4"
-        android:rowCount="1">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/area"
-            android:layout_marginLeft="4dp"
-            android:layout_width="0dp"
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:text="Country"
-            android:gravity="start"
-            android:textColor="@color/dark_blue"
-            android:textSize="12sp"
-            android:textStyle="normal|bold" />
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:alignmentMode="alignMargins"
+            android:columnCount="4"
+            android:rowCount="1">
 
-        <TextView
-            android:id="@+id/A"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:text="11,530"
-            android:textColor="@color/red"
-            android:textSize="12sp"
-            android:textStyle="normal|bold"
-            android:gravity="center" />
+            <TextView
+                android:id="@+id/area"
+                android:layout_marginLeft="4dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Country"
+                android:gravity="start"
+                android:textColor="@color/dark_blue"
+                android:textSize="12sp"
+                android:textStyle="normal|bold" />
 
-        <TextView
-            android:id="@+id/R"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:text="11,960"
-            android:textColor="@color/green"
-            android:textSize="12sp"
-            android:textStyle="normal|bold"
-            android:gravity="center" />
+            <TextView
+                android:id="@+id/A"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="11,530"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                android:textStyle="normal|bold"
+                android:gravity="center" />
 
-        <TextView
-            android:id="@+id/D"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:paddingLeft="10dp"
-            android:text="230"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            android:textStyle="normal|bold"
-            android:gravity="center" />
-    </GridLayout>
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tv_r"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="11,960"
+                android:textColor="@color/green"
+                android:textSize="12sp"
+                android:textStyle="normal|bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/D"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:paddingLeft="10dp"
+                android:text="230"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:textStyle="normal|bold"
+                android:gravity="center" />
+        </GridLayout>
+    </RelativeLayout>
+</layout>
