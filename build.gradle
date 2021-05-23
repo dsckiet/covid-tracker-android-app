@@ -25,7 +25,7 @@ buildscript {
         version_richpath = "0.1.1"
         version_multidex = "2.0.1"
         version_dagger = "2.28.3"
-        version_dagger_android = "2.35.1"
+        version_dagger_android = "2.28.1"
     }
 
     repositories {
