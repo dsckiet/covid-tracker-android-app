@@ -17,11 +17,11 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_frag_Globe_to_countryListFragment"
-            app:destination="@id/countryListFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/countryListFragment" />
+<!--        app:enterAnim="@anim/fragment_fade_enter"-->
+<!--        app:exitAnim="@anim/fragment_fade_exit"-->
+<!--        app:popEnterAnim="@anim/fragment_fade_enter"-->
+<!--        app:popExitAnim="@anim/fragment_fade_exit"-->
     </fragment>
     <fragment
         android:id="@+id/frag_India"
