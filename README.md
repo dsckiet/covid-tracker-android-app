@@ -46,8 +46,8 @@
 ## Contributors
 
 * [Anshul Gupta](https://github.com/Anshul1507)
-* [Vidit Jha](http://github.com/jhavidit)
 * [Aditya](https://github.com/ydasc815)
+* [Vidit Jha](http://github.com/jhavidit)
 * [Manvendra](https://github.com/MANNU-BOT)
 
 
