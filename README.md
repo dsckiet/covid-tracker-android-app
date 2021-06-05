@@ -10,8 +10,16 @@
 
 
 ## Functionalities
-- [ ]  < ADD FUNCTIONALITY >
-- [ ]  < ADD FUNCTIONALITY >
+- [ ] Information of Total, Active, Recovered & Deceased Case counts at India & Global levels.
+- [ ] Timely notifications of data updates (currently set to 2 times a day).
+- [ ] Users can view details at country level in Global section, and State & district level in India section.
+- [ ] Pie Charts and Line Graph are used to depict cummulative information at Global & India levels respectively.
+
+## Upcoming Features
+- [ ] An Interactive Map of India to enhance the User experience.
+- [ ] Section devoted to show Vaccination & Testing statistics to the users.
+- [ ] Ability for users to be able to download & share their COVID-19 vaccination certificates from within the app.
+- [ ] Get timely notifications for your scheduled vaccination dates.
 
 <br>
 
