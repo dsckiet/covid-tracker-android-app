@@ -31,26 +31,22 @@
 	-  A working Android physical device or emulator with USB debugging enabled
 
 * Directions to setup/install
-- Clone this repository to your local folder using Git bash:
-```bash
-git clone https://github.com/dsckiet/covid-tracker-android-app.git
-```
-- Open this project from Android Studio
-- Connect to an Android physical device or emulator
-- To install the app into your device, run the following using command line tools
-```bash
-gradlew installDebug
-```
+	- Clone this repository to your local folder using Git bash:
+	```bash
+	git clone https://github.com/dsckiet/covid-tracker-android-app.git
+	```
+	- Open this project from Android Studio
+	- Connect to an Android physical device or emulator
+	- To install the app into your device, run the following using command line tools
+	```bash
+	gradlew installDebug
+	```
 
 * Directions to execute
--  To launch hands free, run the following using command line tools
-```bash
-adb shell monkey -p com.dsckiet.covid_tracker_android_app -c android.intent.category.LAUNCHER 1
-```
-
-```bash
-< insert code >
-```
+	-  To launch hands free, run the following using command line tools
+	```bash
+	adb shell monkey -p com.dsckiet.covid_tracker_android_app -c android.intent.category.LAUNCHER 1
+	```
 
 <br>
 
