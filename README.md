@@ -27,8 +27,8 @@
 ## Instructions to run
 
 * Pre-requisites:
-	-  < add pre-requisite >
-	-  < add pre-requisite >
+	-  Android Studio v4.0+
+	-  A working Android physical device or emulator with USB debugging enabled
 
 * Directions to setup/install
 ```bash
@@ -45,7 +45,10 @@
 
 ## Contributors
 
-* [ < ADD YOUR NAME > ](ADD_PROFILE_URL_HERE)
+* [Anshul Gupta](https://github.com/Anshul1507)
+* [Vidit Jha](http://github.com/jhavidit)
+* [Aditya](https://github.com/ydasc815)
+* [Manvendra](https://github.com/MANNU-BOT)
 
 
 
