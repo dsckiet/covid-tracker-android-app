@@ -1,6 +1,6 @@
 <p align="left">
 	<img width="240" src="https://raw.githubusercontent.com/dsckiet/resources/master/dsckiet-logo.png" />
-	<h2 align="left"> < ADD PROJECT TITLE > </h2>
+	<h2 align="left"> Covid Tracker </h2>
 	<h4 align="left"> < ADD PROJECT DESCRIPTION > <h4>
 </p>
 
