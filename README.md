@@ -1,7 +1,7 @@
 <p align="left">
 	<img width="240" src="https://raw.githubusercontent.com/dsckiet/resources/master/dsckiet-logo.png" />
-	<h2 align="left"> Covid Tracker </h2>
-	<h4 align="left"> < ADD PROJECT DESCRIPTION > <h4>
+	<h2 align="left"> Covid Tracker v1.0 </h2>
+	<h4 align="left"> Covid Tracker is an Android App that provides to its users, information about current COVID-19 case counts at India as well as Global level using various forms of statistical data interpretation methods. <h4>
 </p>
 
 ---
