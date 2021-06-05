@@ -31,8 +31,9 @@
 	-  A working Android physical device or emulator with USB debugging enabled
 
 * Directions to setup/install
+	- Clone this repository to your local folder using Git bash:
 ```bash
-< insert code >
+git bash https://github.com/dsckiet/covid-tracker-android-app.git
 ```
 
 * Directions to execute
