@@ -23,6 +23,7 @@ class NotificationWorker(val context: Context, workerParameters: WorkerParameter
     Worker(context, workerParameters) {
 
     override fun doWork(): Result {
+        println("Do Work Called >>> ")
         return if (activeIndia != null && lastUpdated != null) {
             showNotification(
                 stringToNumberFormat(activeIndia!!),

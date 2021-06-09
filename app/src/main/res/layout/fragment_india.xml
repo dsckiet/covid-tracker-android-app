@@ -310,7 +310,7 @@
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="260dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="24dp"
                             android:layout_marginRight="24dp"
                             app:cardCornerRadius="8dp"
@@ -404,37 +404,37 @@
                                     </RelativeLayout>
                                 </androidx.cardview.widget.CardView>
 
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/india_map_btn"
-                                    android:layout_width="80dp"
-                                    android:layout_height="30dp"
-                                    android:layout_below="@id/card_rate_growth"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_gravity="end"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_marginRight="20dp"
-                                    android:background="@color/next_screen_button"
-                                    app:cardCornerRadius="4dp"
-                                    app:cardElevation="4dp">
+<!--                                <androidx.cardview.widget.CardView-->
+<!--                                    android:id="@+id/india_map_btn"-->
+<!--                                    android:layout_width="80dp"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:layout_below="@id/card_rate_growth"-->
+<!--                                    android:layout_alignParentEnd="true"-->
+<!--                                    android:layout_alignParentRight="true"-->
+<!--                                    android:layout_gravity="end"-->
+<!--                                    android:layout_marginTop="5dp"-->
+<!--                                    android:layout_marginEnd="20dp"-->
+<!--                                    android:layout_marginRight="20dp"-->
+<!--                                    android:background="@color/next_screen_button"-->
+<!--                                    app:cardCornerRadius="4dp"-->
+<!--                                    app:cardElevation="4dp">-->
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@color/next_screen_button"
-                                        android:gravity="center"
-                                        android:orientation="horizontal">
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="match_parent"-->
+<!--                                        android:background="@color/next_screen_button"-->
+<!--                                        android:gravity="center"-->
+<!--                                        android:orientation="horizontal">-->
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/view_map"
-                                            android:textColor="@android:color/white"
-                                            android:textSize="15sp"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="@string/view_map"-->
+<!--                                            android:textColor="@android:color/white"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            android:textStyle="bold" />-->
+<!--                                    </LinearLayout>-->
+<!--                                </androidx.cardview.widget.CardView>-->
                             </RelativeLayout>
 
                         </androidx.cardview.widget.CardView>

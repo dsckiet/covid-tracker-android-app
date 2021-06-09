@@ -16,7 +16,8 @@ import javax.inject.Singleton
         ActivityBuilderModule::class,
         NetworkModule::class,
         ViewModelFactoryModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        RepositoryModule::class
     ]
 )
 interface AppComponent : AndroidInjector<BaseApplication> {
