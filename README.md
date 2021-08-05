@@ -18,8 +18,6 @@
 ## Upcoming Features
 - [ ] An Interactive Map of India to enhance the User experience.
 - [ ] Section devoted to show Vaccination & Testing statistics to the users.
-- [ ] Ability for users to be able to download & share their COVID-19 vaccination certificates from within the app.
-- [ ] Get timely notifications for your scheduled vaccination dates.
 
 <br>
 
