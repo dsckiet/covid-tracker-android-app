@@ -51,9 +51,9 @@ class IndiaFragment : Fragment() {
         binding.nextScreenBtn.setOnClickListener {
             navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_stateListFragment)
         }
-//        binding.indiaMapBtn.setOnClickListener{
-//            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_indiaMapFragment)
-//        }
+        binding.viewMapBtn.setOnClickListener {
+            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_indiaMapFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
