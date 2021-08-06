@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_district_list.swipeRefreshLayout
 
 class DistrictListFragment : BaseFragment<DistrictWiseTrackerViewModel>() {
     lateinit var navController: NavController
-    private lateinit var viewModel: DistrictWiseTrackerViewModel
     lateinit var adapter: DistrictAdapter
     private var stateCode: String? = null
     private var lastUpdatedTime: String? = null
@@ -35,7 +34,7 @@ class DistrictListFragment : BaseFragment<DistrictWiseTrackerViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button_district.setOnClickListener {
             navController.popBackStack()
@@ -55,14 +54,14 @@ class DistrictListFragment : BaseFragment<DistrictWiseTrackerViewModel>() {
     }
 
     private fun getData() {
-        viewModel.getCoronaDistrictDetails()
+        mViewModel.getCoronaDistrictDetails()
         adapter = DistrictAdapter(requireContext())
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayout.isRefreshing = it
         })
         recycler_view_district_list.adapter = adapter
         if (stateCode != null) {
-            viewModel.showDistrictWiseDetails.observe(viewLifecycleOwner, Observer {
+            mViewModel.showDistrictWiseDetails.observe(viewLifecycleOwner, Observer {
                 for (i in it.indices)
                     if (it[i].statecode == stateCode) {
                         if (lastUpdatedTime != null)

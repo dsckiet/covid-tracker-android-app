@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_country_list.*
 class CountryListFragment : BaseFragment<CountryWiseTrackerViewModel>() {
     private lateinit var navController: NavController
     private lateinit var adapter: CountriesCompleteListAdapter
-    private lateinit var viewModel: CountryWiseTrackerViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +30,7 @@ class CountryListFragment : BaseFragment<CountryWiseTrackerViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button.setOnClickListener {
             navController.popBackStack()
@@ -52,12 +51,12 @@ class CountryListFragment : BaseFragment<CountryWiseTrackerViewModel>() {
 
         recycler_view_country_list.adapter
         adapter = CountriesCompleteListAdapter(requireContext())
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayout.isRefreshing = it
         })
-        viewModel.getCoronaCountryDetails()
+        mViewModel.getCoronaCountryDetails()
         recycler_view_country_list.adapter = adapter
-        viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
             val lastUpdatedTime = "Last Updated " + getPeriod(globalTimeDateFormat(it.date)!!)
             last_updated.text = lastUpdatedTime

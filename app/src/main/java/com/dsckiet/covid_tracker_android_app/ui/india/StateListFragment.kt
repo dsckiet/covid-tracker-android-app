@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_state_list.*
 
 
 class StateListFragment : BaseFragment<StateWiseTrackerViewModel>() {
-    private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateCompleteListAdapter
     lateinit var navController: NavController
     override fun onCreateView(
@@ -30,7 +29,7 @@ class StateListFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button.setOnClickListener {
             navController.popBackStack()
@@ -51,22 +50,22 @@ class StateListFragment : BaseFragment<StateWiseTrackerViewModel>() {
         adapter = StateCompleteListAdapter(requireContext())
 
 
-        viewModel.getCoronaStateDetails()
+        mViewModel.getCoronaStateDetails()
 
         recycler_view_state_list.adapter = adapter
-        viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             adapter.setStateWiseTracker(it)
         })
         swipeRefreshLayoutState.isRefreshing = false
 
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayoutState.isRefreshing = it
 
         })
-        viewModel.getCoronaStateDetails()
+        mViewModel.getCoronaStateDetails()
 
         recycler_view_state_list.adapter = adapter
-        viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             adapter.setStateWiseTracker(it)
         })
     }

@@ -29,7 +29,6 @@ import kotlin.math.roundToLong
 
 class GlobalFragment : BaseFragment<CountryWiseTrackerViewModel>() {
 
-    private lateinit var viewModel: CountryWiseTrackerViewModel
     private lateinit var adapter: CountriesAdapter
     private lateinit var navController: NavController
     private lateinit var binding: FragmentGlobalBinding
@@ -43,7 +42,7 @@ class GlobalFragment : BaseFragment<CountryWiseTrackerViewModel>() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
         requireActivity().window.statusBarColor = Color.parseColor("#5baeff")
 
@@ -71,13 +70,13 @@ class GlobalFragment : BaseFragment<CountryWiseTrackerViewModel>() {
         adapter = CountriesAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
-        viewModel.getCoronaCountryDetails()
+        mViewModel.getCoronaCountryDetails()
         binding.recyclerView.adapter = adapter
 
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             binding.swipeRefreshLayout.isRefreshing = it
         })
-        viewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaCountryDetails.observe(viewLifecycleOwner, Observer {
 
             val mv = CustomMarkerView(
                 requireContext(),

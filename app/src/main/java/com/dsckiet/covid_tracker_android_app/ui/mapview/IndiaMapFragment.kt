@@ -36,7 +36,7 @@ import javax.inject.Inject
 class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
     private lateinit var adapter: StateAdapter
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
     private val entries = ArrayList<Entry>()
     private val xAxisLabel: ArrayList<String> = ArrayList()
     private lateinit var binding: FragmentIndiaMapBinding

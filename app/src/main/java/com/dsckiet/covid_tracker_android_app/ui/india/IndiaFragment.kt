@@ -28,7 +28,6 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter
 
 class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
-    private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateAdapter
     lateinit var navController: NavController
     private val entries = ArrayList<Entry>()
@@ -43,7 +42,7 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
 
         binding.radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
@@ -71,13 +70,13 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
         adapter = StateAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
-        viewModel.getCoronaStateDetails()
+        mViewModel.getCoronaStateDetails()
         binding.recyclerView.adapter = adapter
 
 
 
 
-        viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             if (!binding.swipeRefreshLayout.isRefreshing) {
                 val lastUpdatedTime =
                     "Last Updated " + getPeriod(it[0].lastupdatedtime.toDateFormat()!!)
@@ -92,7 +91,7 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
                 adapter.setStateWiseTracker(it)
             }
         })
-        viewModel.showCoronaIndiaLineChart.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaIndiaLineChart.observe(viewLifecycleOwner, Observer {
             if (!binding.swipeRefreshLayout.isRefreshing) {
                 entries.clear()
                 xAxisLabel.clear()
@@ -166,7 +165,7 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
             }
         })
 
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             binding.swipeRefreshLayout.isRefreshing = it
         })
     }
