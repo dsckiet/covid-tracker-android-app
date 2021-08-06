@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.adapter.CountriesAdapter
 import com.dsckiet.covid_tracker_android_app.databinding.FragmentGlobalBinding
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import com.dsckiet.covid_tracker_android_app.utils.*
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -26,7 +27,7 @@ import java.util.*
 import kotlin.math.roundToLong
 
 
-class GlobalFragment : androidx.fragment.app.Fragment() {
+class GlobalFragment : BaseFragment<CountryWiseTrackerViewModel>() {
 
     private lateinit var viewModel: CountryWiseTrackerViewModel
     private lateinit var adapter: CountriesAdapter
@@ -42,6 +43,7 @@ class GlobalFragment : androidx.fragment.app.Fragment() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = getViewModel()
         navController = Navigation.findNavController(view)
         requireActivity().window.statusBarColor = Color.parseColor("#5baeff")
 
@@ -66,7 +68,6 @@ class GlobalFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun getData() {
-        viewModel = ViewModelProvider(this).get(CountryWiseTrackerViewModel::class.java)
         adapter = CountriesAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
@@ -171,5 +172,9 @@ class GlobalFragment : androidx.fragment.app.Fragment() {
             binding.recoverArrowNumber.text = stringToNumberFormat(it.global.newRecovered.toString())
             adapter.setCountryWiseTracker(it.countries)
         })
+    }
+
+    override fun getViewModel(): CountryWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(CountryWiseTrackerViewModel::class.java)
     }
 }

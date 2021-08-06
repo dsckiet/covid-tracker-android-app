@@ -6,8 +6,9 @@ import androidx.lifecycle.LiveData
 import com.dsckiet.covid_tracker_android_app.datastore.models.CountryWiseData
 
 import com.dsckiet.covid_tracker_android_app.datastore.repositories.CountryWiseTrackerRepository
+import javax.inject.Inject
 
-class CountryWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
+class CountryWiseTrackerViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
     val showCoronaCountryDetails: LiveData<CountryWiseData>
     val showProgress: LiveData<Boolean>
     private val repository = CountryWiseTrackerRepository(application)

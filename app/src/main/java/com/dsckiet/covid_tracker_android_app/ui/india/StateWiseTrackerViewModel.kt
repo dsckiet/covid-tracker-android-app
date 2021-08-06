@@ -6,8 +6,9 @@ import androidx.lifecycle.LiveData
 import com.dsckiet.covid_tracker_android_app.datastore.models.CasesTimeSery
 import com.dsckiet.covid_tracker_android_app.datastore.models.Statewise
 import com.dsckiet.covid_tracker_android_app.datastore.repositories.StateWiseTrackerRepository
+import javax.inject.Inject
 
-class StateWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
+class StateWiseTrackerViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
     val showCoronaStateDetails: LiveData<List<Statewise>>
     val showProgress: LiveData<Boolean>
     val showCoronaIndiaLineChart: LiveData<List<CasesTimeSery>>

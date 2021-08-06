@@ -5,8 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.dsckiet.covid_tracker_android_app.datastore.models.DistrictWiseData
 import com.dsckiet.covid_tracker_android_app.datastore.repositories.DistrictWiseTrackerRepository
+import javax.inject.Inject
 
-class DistrictWiseTrackerViewModel(application: Application) : AndroidViewModel(application) {
+class DistrictWiseTrackerViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
     val showDistrictWiseDetails: LiveData<List<DistrictWiseData>>
     val showProgress: LiveData<Boolean>
     private val repository = DistrictWiseTrackerRepository(application)

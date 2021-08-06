@@ -11,14 +11,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.adapter.DistrictAdapter
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_district_list.*
 import kotlinx.android.synthetic.main.fragment_district_list.last_updated
 import kotlinx.android.synthetic.main.fragment_district_list.swipeRefreshLayout
 
 
-class DistrictListFragment : Fragment() {
+class DistrictListFragment : BaseFragment<DistrictWiseTrackerViewModel>() {
     lateinit var navController: NavController
-    lateinit var viewModel: DistrictWiseTrackerViewModel
+    private lateinit var viewModel: DistrictWiseTrackerViewModel
     lateinit var adapter: DistrictAdapter
     private var stateCode: String? = null
     private var lastUpdatedTime: String? = null
@@ -34,6 +35,7 @@ class DistrictListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button_district.setOnClickListener {
             navController.popBackStack()
@@ -53,7 +55,6 @@ class DistrictListFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel = ViewModelProvider(this).get(DistrictWiseTrackerViewModel::class.java)
         viewModel.getCoronaDistrictDetails()
         adapter = DistrictAdapter(requireContext())
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
@@ -72,6 +73,10 @@ class DistrictListFragment : Fragment() {
                     }
             })
         }
+    }
+
+    override fun getViewModel(): DistrictWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(DistrictWiseTrackerViewModel::class.java)
     }
 
 

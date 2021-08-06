@@ -9,11 +9,12 @@ import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.databinding.ActivityDashboardBinding
 import com.dsckiet.covid_tracker_android_app.utils.InternetConnectivity
 import com.dsckiet.covid_tracker_android_app.worker.NotificationWorker
+import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerAppCompatActivity
 import java.util.concurrent.TimeUnit
 
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

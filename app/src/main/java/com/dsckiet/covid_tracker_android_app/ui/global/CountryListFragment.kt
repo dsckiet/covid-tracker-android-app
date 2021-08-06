@@ -11,12 +11,13 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.adapter.CountriesCompleteListAdapter
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import com.dsckiet.covid_tracker_android_app.utils.getPeriod
 import com.dsckiet.covid_tracker_android_app.utils.globalTimeDateFormat
 import kotlinx.android.synthetic.main.fragment_country_list.*
 
 
-class CountryListFragment : Fragment() {
+class CountryListFragment : BaseFragment<CountryWiseTrackerViewModel>() {
     private lateinit var navController: NavController
     private lateinit var adapter: CountriesCompleteListAdapter
     private lateinit var viewModel: CountryWiseTrackerViewModel
@@ -30,6 +31,7 @@ class CountryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button.setOnClickListener {
             navController.popBackStack()
@@ -48,7 +50,6 @@ class CountryListFragment : Fragment() {
 
     private fun getData() {
 
-        viewModel = ViewModelProvider(this).get(CountryWiseTrackerViewModel::class.java)
         recycler_view_country_list.adapter
         adapter = CountriesCompleteListAdapter(requireContext())
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
@@ -62,6 +63,10 @@ class CountryListFragment : Fragment() {
             last_updated.text = lastUpdatedTime
             adapter.setCountryWiseTracker(it.countries)
         })
+    }
+
+    override fun getViewModel(): CountryWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(CountryWiseTrackerViewModel::class.java)
     }
 
 }

@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.global.DashboardActivity
+import dagger.android.support.DaggerAppCompatActivity
 import java.lang.Exception
 
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

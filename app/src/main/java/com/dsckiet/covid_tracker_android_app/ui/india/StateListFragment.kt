@@ -11,11 +11,12 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.adapter.StateCompleteListAdapter
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_country_list.back_button
 import kotlinx.android.synthetic.main.fragment_state_list.*
 
 
-class StateListFragment : Fragment() {
+class StateListFragment : BaseFragment<StateWiseTrackerViewModel>() {
     private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateCompleteListAdapter
     lateinit var navController: NavController
@@ -29,6 +30,7 @@ class StateListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = getViewModel()
         navController = Navigation.findNavController(view)
         back_button.setOnClickListener {
             navController.popBackStack()
@@ -46,7 +48,6 @@ class StateListFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
         adapter = StateCompleteListAdapter(requireContext())
 
 
@@ -68,5 +69,9 @@ class StateListFragment : Fragment() {
         viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             adapter.setStateWiseTracker(it)
         })
+    }
+
+    override fun getViewModel(): StateWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(StateWiseTrackerViewModel::class.java)
     }
 }

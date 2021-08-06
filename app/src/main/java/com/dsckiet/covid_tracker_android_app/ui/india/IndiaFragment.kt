@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.ui.adapter.StateAdapter
 import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaBinding
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import com.dsckiet.covid_tracker_android_app.utils.*
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -25,7 +26,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 
 
-class IndiaFragment : Fragment() {
+class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
     private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateAdapter
@@ -42,6 +43,7 @@ class IndiaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = getViewModel()
         navController = Navigation.findNavController(view)
 
         binding.radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
@@ -66,7 +68,6 @@ class IndiaFragment : Fragment() {
 
 
     private fun getData() {
-        viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
         adapter = StateAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
@@ -168,5 +169,9 @@ class IndiaFragment : Fragment() {
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
             binding.swipeRefreshLayout.isRefreshing = it
         })
+    }
+
+    override fun getViewModel(): StateWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(StateWiseTrackerViewModel::class.java)
     }
 }

@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.dsckiet.covid_tracker_android_app.R
+import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaBinding
+import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaMapBinding
 import com.dsckiet.covid_tracker_android_app.ui.adapter.StateAdapter
+import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import com.dsckiet.covid_tracker_android_app.utils.*
 import com.dsckiet.covid_tracker_android_app.ui.india.StateWiseTrackerViewModel
 import com.github.mikephil.charting.components.XAxis
@@ -24,15 +30,16 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.richpath.RichPath
 import kotlinx.android.synthetic.main.fragment_india.*
 import kotlinx.android.synthetic.main.fragment_india_map.*
+import javax.inject.Inject
 
 
-class IndiaMapFragment : Fragment() {
+class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
-    private lateinit var viewModel: StateWiseTrackerViewModel
     private lateinit var adapter: StateAdapter
     lateinit var navController: NavController
     private val entries = ArrayList<Entry>()
     private val xAxisLabel: ArrayList<String> = ArrayList()
+    private lateinit var binding: FragmentIndiaMapBinding
 
     private val bgColorList = listOf<Int>(
         com.dsckiet.covid_tracker_android_app.R.color.light_blue,
@@ -51,22 +58,20 @@ class IndiaMapFragment : Fragment() {
     private val bgColorGraph = bgColorList[0]
     private val baseColorGraph = baseColorList[0]
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(
-            com.dsckiet.covid_tracker_android_app.R.layout.fragment_india_map,
-            container,
-            false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_india_map, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
-
+        unColorRest()
+        val defaultSelectionColor = ContextCompat.getColor(requireContext(), baseColorGraph)
+        binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = defaultSelectionColor
+        binding.stateName.setTextColor(defaultSelectionColor)
+        binding.stateName.text = "Haryana"
 //        radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
 //            if (checkedId == com.dsckiet.covid_tracker_android_app.R.id.rb_globe)
 //                navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_frag_Globe)
@@ -197,17 +202,17 @@ class IndiaMapFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(StateWiseTrackerViewModel::class.java)
         adapter = StateAdapter(requireContext())
         if (!InternetConnectivity.isNetworkAvailable(requireContext())!!)
             Toast.makeText(requireContext(), "Internet Unavailable", Toast.LENGTH_SHORT).show()
-        viewModel.getCoronaStateDetails()
+        mViewModel.getCoronaStateDetails()
         recycler_view.adapter = adapter
 
 
 
 
-        viewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             if (!swipeRefreshLayout.isRefreshing) {
                 val lastUpdatedTime =
                     "Last Updated " + getPeriod(it[0].lastupdatedtime.toDateFormat()!!)
@@ -222,7 +227,7 @@ class IndiaMapFragment : Fragment() {
                 adapter.setStateWiseTracker(it)
             }
         })
-        viewModel.showCoronaIndiaLineChart.observe(viewLifecycleOwner, Observer {
+        mViewModel.showCoronaIndiaLineChart.observe(viewLifecycleOwner, Observer {
             if (!swipeRefreshLayout.isRefreshing) {
                 entries.clear()
                 xAxisLabel.clear()
@@ -296,8 +301,12 @@ class IndiaMapFragment : Fragment() {
             }
         })
 
-        viewModel.showProgress.observe(viewLifecycleOwner, Observer {
+        mViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             swipeRefreshLayout.isRefreshing = it
         })
+    }
+
+    override fun getViewModel(): StateWiseTrackerViewModel {
+        return ViewModelProvider(this.requireActivity(), viewModelFactory).get(StateWiseTrackerViewModel::class.java)
     }
 }
