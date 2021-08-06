@@ -2,6 +2,7 @@ package com.dsckiet.covid_tracker_android_app.ui.base
 
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerFragment
@@ -22,6 +23,10 @@ abstract class BaseFragment<V : ViewModel> : DaggerFragment() {
 
     fun hideProgress(progressBar: ProgressBar) {
         progressBar.visibility = View.GONE
+    }
+
+    fun toast(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
 }

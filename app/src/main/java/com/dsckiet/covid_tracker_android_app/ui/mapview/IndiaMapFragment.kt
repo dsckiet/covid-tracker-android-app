@@ -8,15 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dsckiet.covid_tracker_android_app.R
-import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaBinding
 import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaMapBinding
+import com.dsckiet.covid_tracker_android_app.datastore.models.Statewise
 import com.dsckiet.covid_tracker_android_app.ui.adapter.StateAdapter
 import com.dsckiet.covid_tracker_android_app.ui.base.BaseFragment
 import com.dsckiet.covid_tracker_android_app.utils.*
@@ -30,7 +28,6 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.richpath.RichPath
 import kotlinx.android.synthetic.main.fragment_india.*
 import kotlinx.android.synthetic.main.fragment_india_map.*
-import javax.inject.Inject
 
 
 class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
@@ -40,6 +37,11 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
     private val entries = ArrayList<Entry>()
     private val xAxisLabel: ArrayList<String> = ArrayList()
     private lateinit var binding: FragmentIndiaMapBinding
+    private val stateDataConfirmed = HashMap<String, Long>()
+    private val stateDataActive = HashMap<String, Long>()
+    private val stateDataDeaths = HashMap<String, Long>()
+    private val stateDataRecovered = HashMap<String, Long>()
+    private var boxSelectionConstant = 0
 
     private val bgColorList = listOf<Int>(
         com.dsckiet.covid_tracker_android_app.R.color.light_blue,
@@ -72,30 +74,84 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
         binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = defaultSelectionColor
         binding.stateName.setTextColor(defaultSelectionColor)
         binding.stateName.text = "Haryana"
-//        radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
-//            if (checkedId == com.dsckiet.covid_tracker_android_app.R.id.rb_globe)
-//                navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_frag_Globe)
-//        }
-//        next_screen_btn.setOnClickListener {
-//            navController.navigate(com.dsckiet.covid_tracker_android_app.R.id.action_frag_India_to_stateListFragment)
-//        }
+        val data: List<Statewise>? = mViewModel.showCoronaStateDetails.value
+        for(value in data!!) {
+            val confirmed: Long = value.confirmed.toLong()
+            val active: Long = value.active.toLong()
+            val deaths: Long = value.deaths.toLong()
+            val recovered: Long = value.recovered.toLong()
+            val state = value.state
+            stateDataActive[state] = active
+            stateDataConfirmed[state] = confirmed
+            stateDataDeaths[state] = deaths
+            stateDataRecovered[state] = recovered
+        }
+        binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
+        binding.categoryConfirmed.setOnClickListener {
+            binding.confirmedShadow.visibility = View.VISIBLE
+            binding.activeShadow.visibility = View.INVISIBLE
+            binding.recoveredShadow.visibility = View.INVISIBLE
+            binding.deathShadow.visibility = View.INVISIBLE
+            boxSelectionConstant = 0
+            val defaultSelectionColor = ContextCompat.getColor(requireContext(), baseColorGraph)
+            binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = defaultSelectionColor
+            binding.stateName.setTextColor(defaultSelectionColor)
+            binding.stateName.text = "Haryana"
+        }
+        binding.categoryActive.setOnClickListener {
+            binding.confirmedShadow.visibility = View.INVISIBLE
+            binding.activeShadow.visibility = View.VISIBLE
+            binding.recoveredShadow.visibility = View.INVISIBLE
+            binding.deathShadow.visibility = View.INVISIBLE
+            boxSelectionConstant = 1
+        }
+        binding.categoryRecovered.setOnClickListener {
+            binding.confirmedShadow.visibility = View.INVISIBLE
+            binding.activeShadow.visibility = View.INVISIBLE
+            binding.recoveredShadow.visibility = View.VISIBLE
+            binding.deathShadow.visibility = View.INVISIBLE
+            boxSelectionConstant = 2
+        }
+        binding.categoryDeaths.setOnClickListener {
+            binding.confirmedShadow.visibility = View.INVISIBLE
+            binding.activeShadow.visibility = View.INVISIBLE
+            binding.recoveredShadow.visibility = View.INVISIBLE
+            binding.deathShadow.visibility = View.VISIBLE
+            boxSelectionConstant = 3
+        }
+        stateAreaClickEventListener()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        getData()
-//        swipeRefreshLayout.setOnRefreshListener {
-//            getData()
-//        }
-        setOnClickListener()
-    }
-
-    private fun setOnClickListener() {
-        val yellowColor = ContextCompat.getColor(requireContext(), baseColorGraph)
+    private fun stateAreaClickEventListener() {
+        val confirmedColor = ContextCompat.getColor(requireContext(), bgColorList[0])
+        val activeColor = ContextCompat.getColor(requireContext(), bgColorList[1])
+        val recoveredColor = ContextCompat.getColor(requireContext(), bgColorList[2])
+        val deathColor = ContextCompat.getColor(requireContext(), bgColorList[3])
         ic_india_map.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
             unColorRest()
-            richPath.fillColor = yellowColor
-            state_name.setTextColor(yellowColor)
+            when(boxSelectionConstant) {
+                0 -> {
+                    richPath.fillColor = confirmedColor
+                    binding.stateName.setTextColor(confirmedColor)
+                }
+                1 -> {
+                    richPath.fillColor = activeColor
+                    binding.stateName.setTextColor(activeColor)
+                }
+                2 -> {
+                    richPath.fillColor = recoveredColor
+                    binding.stateName.setTextColor(recoveredColor)
+                }
+                3 -> {
+                    richPath.fillColor = deathColor
+                    binding.stateName.setTextColor(deathColor)
+                }
+                else -> {
+                    richPath.fillColor = confirmedColor
+                    binding.stateName.setTextColor(confirmedColor)
+                }
+            }
+
             when (richPath.name) {
                 "Andhra Pradesh" -> {
                     state_name.text = "Andhra Pradhesh"
@@ -192,12 +248,43 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
                     state_name.text = "Nagaland"
                 }
             }
+            when(boxSelectionConstant) {
+                0 -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
+                1 -> binding.stateCount.text = stringToNumberFormat(stateDataActive[binding.stateName.text].toString())
+                2 -> binding.stateCount.text = stringToNumberFormat(stateDataRecovered[binding.stateName.text].toString())
+                3 -> binding.stateCount.text = stringToNumberFormat(stateDataDeaths[binding.stateName.text].toString())
+                else -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
+            }
         })
     }
 
     private fun unColorRest() {
-        for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
-            richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorGraph)
+        when(boxSelectionConstant) {
+            0 -> {
+                for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+                    richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorList[0])
+                }
+            }
+            1 -> {
+                for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+                    richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorList[1])
+                }
+            }
+            2 -> {
+                for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+                    richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorList[2])
+                }
+            }
+            3 -> {
+                for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+                    richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorList[3])
+                }
+            }
+            else -> {
+                for (richPath: RichPath in ic_india_map.findAllRichPaths()) {
+                    richPath.fillColor = ContextCompat.getColor(requireContext(), bgColorList[0])
+                }
+            }
         }
     }
 
