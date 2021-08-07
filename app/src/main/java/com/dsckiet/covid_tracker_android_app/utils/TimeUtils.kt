@@ -37,10 +37,10 @@ fun String.toDateFormat(): Date? {
 
 fun globalTimeDateFormat(time: String): Date? {
     val format = SimpleDateFormat(
-        "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US
+        "yyyy-MM-dd'T'HH:mm'Z'", Locale.US
     )
     format.timeZone = TimeZone.getTimeZone("UTC")
-    return format.parse(time.substring(0, time.length - 5)+'Z')
+    return format.parse(time.substring(0, 16) + 'Z')
 
 
 }
