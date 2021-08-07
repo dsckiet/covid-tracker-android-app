@@ -1,9 +1,12 @@
 package com.dsckiet.covid_tracker_android_app.ui.base
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.FirebaseApp
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
