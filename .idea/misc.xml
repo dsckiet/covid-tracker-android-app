@@ -8,9 +8,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_draw_search.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_search.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/india_map.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/progress_bs.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/search_round.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/bottom_sheet_state_search.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_india.xml" value="0.10400000000000001" />
-        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_india_map.xml" value="0.2" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_india_map.xml" value="0.136" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/search_round.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/state_list_item.xml" value="0.23229166666666667" />
       </map>
     </option>
   </component>

@@ -37,4 +37,10 @@
     <string name="back_button_iv_cnt">back button</string>
     <string name="state_name">State Name</string>
     <string name="_0">0</string>
+    <string name="map_case_format">%d %s cases</string>
+    <string name="search_btn">search_btn</string>
+    <string name="start_typing">Start typing...</string>
+    <string name="no_such_state_found">No such state found</string>
+    <string name="search_state_by_name">Search state by name</string>
+    <string name="karnataka">Karnataka</string>
 </resources>

@@ -51,6 +51,10 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = getViewModel()
         navController = Navigation.findNavController(view)
+        binding.icSearch.setOnClickListener{
+            val bottomSheet = StateSearchBottomSheet()
+            bottomSheet.show(parentFragmentManager, "bottom-sheet")
+        }
         unColorRest()
         val defaultSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[0])
         binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = defaultSelectionColor
@@ -68,7 +72,7 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
             stateDataDeaths[state] = deaths
             stateDataRecovered[state] = recovered
         }
-        binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
+        binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString()).plus(" confirmed cases")
         binding.categoryConfirmed.setOnClickListener {
             binding.confirmedShadow.visibility = View.VISIBLE
             binding.activeShadow.visibility = View.INVISIBLE
@@ -77,9 +81,9 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
             boxSelectionConstant = 0
             unColorRest()
             val confirmedSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[0])
-            binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = confirmedSelectionColor
+            binding.icIndiaMap.findRichPathByName(binding.stateName.text.toString())?.fillColor = confirmedSelectionColor
             binding.stateName.setTextColor(confirmedSelectionColor)
-            binding.stateName.text = "Haryana"
+            binding.stateName.text = binding.stateName.text.toString()
             setCaseCountData()
         }
         binding.categoryActive.setOnClickListener {
@@ -90,9 +94,9 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
             boxSelectionConstant = 1
             unColorRest()
             val activeSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[1])
-            binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = activeSelectionColor
+            binding.icIndiaMap.findRichPathByName(binding.stateName.text.toString())?.fillColor = activeSelectionColor
             binding.stateName.setTextColor(activeSelectionColor)
-            binding.stateName.text = "Haryana"
+            binding.stateName.text = binding.stateName.text.toString()
             setCaseCountData()
         }
         binding.categoryRecovered.setOnClickListener {
@@ -103,9 +107,9 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
             boxSelectionConstant = 2
             unColorRest()
             val recoveredSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[2])
-            binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = recoveredSelectionColor
+            binding.icIndiaMap.findRichPathByName(binding.stateName.text.toString())?.fillColor = recoveredSelectionColor
             binding.stateName.setTextColor(recoveredSelectionColor)
-            binding.stateName.text = "Haryana"
+            binding.stateName.text = binding.stateName.text.toString()
             setCaseCountData()
         }
         binding.categoryDeaths.setOnClickListener {
@@ -116,9 +120,9 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
             boxSelectionConstant = 3
             unColorRest()
             val deathsSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[3])
-            binding.icIndiaMap.findRichPathByName("Haryana")?.fillColor = deathsSelectionColor
+            binding.icIndiaMap.findRichPathByName(binding.stateName.text.toString())?.fillColor = deathsSelectionColor
             binding.stateName.setTextColor(deathsSelectionColor)
-            binding.stateName.text = "Haryana"
+            binding.stateName.text = binding.stateName.text.toString()
             setCaseCountData()
         }
         stateAreaClickEventListener()
@@ -286,11 +290,11 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
     private fun setCaseCountData() {
         when(boxSelectionConstant) {
-            0 -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
-            1 -> binding.stateCount.text = stringToNumberFormat(stateDataActive[binding.stateName.text].toString())
-            2 -> binding.stateCount.text = stringToNumberFormat(stateDataRecovered[binding.stateName.text].toString())
-            3 -> binding.stateCount.text = stringToNumberFormat(stateDataDeaths[binding.stateName.text].toString())
-            else -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString())
+            0 -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString()).plus(" confirmed cases")
+            1 -> binding.stateCount.text = stringToNumberFormat(stateDataActive[binding.stateName.text].toString()).plus(" active cases")
+            2 -> binding.stateCount.text = stringToNumberFormat(stateDataRecovered[binding.stateName.text].toString()).plus(" recovered cases")
+            3 -> binding.stateCount.text = stringToNumberFormat(stateDataDeaths[binding.stateName.text].toString()).plus(" deceased cases")
+            else -> binding.stateCount.text = stringToNumberFormat(stateDataConfirmed[binding.stateName.text].toString()).plus(" confirmed cases")
         }
     }
 
