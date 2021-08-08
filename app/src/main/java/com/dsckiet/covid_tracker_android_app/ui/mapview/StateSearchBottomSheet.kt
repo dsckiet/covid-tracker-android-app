@@ -41,6 +41,7 @@ class StateSearchBottomSheet : BottomSheetDialogFragment() {
         binding.recyclerView.setHasFixedSize(true)
         stateListData.addAll(itemList)
         searchFieldObserver(binding.etSearchBar)
+        binding.dismissBtn.setOnClickListener { this.dismiss() }
     }
 
     private fun addListData() {

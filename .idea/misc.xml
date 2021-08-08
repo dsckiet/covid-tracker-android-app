@@ -12,13 +12,23 @@
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_coronavirus.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_covid_icon.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_draw_search.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_india.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_mapone.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_search.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_trend.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_world.xml" value="1.0" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_world_new.xml" value="0.536" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_world_nnew.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/ic_worldmap.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/india_map.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/progress_bs.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/search_round.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/worldhigh.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/drawable/worldlow.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/activity_splash_screen.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/bottom_sheet_state_search.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_global.xml" value="0.11296859169199595" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_india.xml" value="0.10400000000000001" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/fragment_india_map.xml" value="0.136" />
         <entry key="..\:/Users/Aditya/AndroidStudioProjects/covid-tracker-android-app/app/src/main/res/layout/search_round.xml" value="0.23229166666666667" />

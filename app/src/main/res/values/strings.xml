@@ -43,4 +43,5 @@
     <string name="no_such_state_found">No such state found</string>
     <string name="search_state_by_name">Search state by name</string>
     <string name="karnataka">Karnataka</string>
+    <string name="dismiss_action">dismiss_action</string>
 </resources>
