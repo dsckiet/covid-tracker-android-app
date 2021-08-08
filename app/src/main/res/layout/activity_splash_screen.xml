@@ -17,7 +17,7 @@
             app:lottie_rawRes="@raw/splash_new"
             app:lottie_autoPlay="true"
             app:lottie_speed="1"
-            app:lottie_loop="true" />
+            app:lottie_loop="false" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.dsckiet.covid_tracker_android_app.R
 import com.dsckiet.covid_tracker_android_app.databinding.FragmentIndiaMapBinding
 import com.dsckiet.covid_tracker_android_app.datastore.models.StateItemResponse
@@ -63,6 +64,10 @@ class IndiaMapFragment : BaseFragment<StateWiseTrackerViewModel>() {
         navController = Navigation.findNavController(view)
         binding.icSearch.setOnClickListener {
             bottomSheet.show(parentFragmentManager, "bottom-sheet")
+        }
+        binding.backBtn.setOnClickListener {
+            this.findNavController().navigate(R.id.action_indiaMapFragment_to_frag_India)
+            navController.popBackStack(R.id.indiaMapFragment, true)
         }
         unColorRest()
         val defaultSelectionColor = ContextCompat.getColor(requireContext(), baseColorList[0])

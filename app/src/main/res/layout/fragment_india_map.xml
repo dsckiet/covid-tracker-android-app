@@ -9,9 +9,10 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/back_india_map"
+            android:id="@+id/back_btn"
             android:layout_width="28dp"
             android:layout_height="28dp"
+            android:padding="4dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
@@ -25,8 +26,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/back_india_map"
-            android:layout_toRightOf="@id/back_india_map"
+            android:layout_toEndOf="@id/back_btn"
+            android:layout_toRightOf="@id/back_btn"
             android:text="@string/indian_map_stats"
             android:textColor="@color/dark_blue"
             android:textSize="24sp"
@@ -61,7 +62,7 @@
             android:id="@+id/categories_map_india"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/back_india_map"
+            android:layout_below="@id/back_btn"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:weightSum="4">
