@@ -58,8 +58,8 @@
 
                     <RadioGroup
                         android:id="@+id/radiobutton"
-                        android:layout_width="230dp"
-                        android:layout_height="40dp"
+                        android:layout_width="256dp"
+                        android:layout_height="50dp"
                         android:layout_below="@id/title"
                         android:layout_marginStart="28dp"
                         android:layout_marginLeft="28dp"
