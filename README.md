@@ -14,14 +14,9 @@
 - [ ] Timely notifications of data updates (currently set to 2 times a day).
 - [ ] Users can view details at country level in Global section, and State & district level in India section.
 - [ ] Pie Charts and Line Graph are used to depict cummulative information at Global & India levels respectively.
-
-## Upcoming Features
-- [ ] An Interactive Map of India to enhance the User experience.
-- [ ] Section devoted to show Vaccination & Testing statistics to the users.
-
+- [ ] An Interactive Map of India to show a graphical view of state-wise statistics.
 <br>
-
-
+	
 ## Instructions to run
 
 * Pre-requisites:
