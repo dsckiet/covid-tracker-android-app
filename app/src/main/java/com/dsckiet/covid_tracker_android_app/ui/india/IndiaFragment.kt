@@ -43,6 +43,7 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = getViewModel()
+        binding.viewMapBtn.isEnabled = false
         navController = Navigation.findNavController(view)
 
         binding.radiobutton.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
@@ -78,6 +79,7 @@ class IndiaFragment : BaseFragment<StateWiseTrackerViewModel>() {
 
         mViewModel.showCoronaStateDetails.observe(viewLifecycleOwner, Observer {
             if (!binding.swipeRefreshLayout.isRefreshing) {
+                binding.viewMapBtn.isEnabled = true
                 val lastUpdatedTime =
                     "Last Updated " + getPeriod(it[0].lastupdatedtime.toDateFormat()!!)
                 binding.lastUpdated.text = lastUpdatedTime
