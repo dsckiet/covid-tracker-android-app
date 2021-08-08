@@ -15,7 +15,7 @@ class SplashScreen : DaggerAppCompatActivity() {
         val background = object : Thread() {
             override fun run() {
                 try {
-                    sleep(2000)
+                    sleep(1500)
                     val intent = Intent(applicationContext, DashboardActivity::class.java)
                     startActivity(intent)
                     finish()
