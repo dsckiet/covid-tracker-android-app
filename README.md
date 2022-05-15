@@ -14,6 +14,10 @@
 - [ ] An Interactive Map of India to show a graphical view of state-wise statistics.
 <br>
 	
+
+https://user-images.githubusercontent.com/54817177/168468485-2ec723c1-3fe8-4dc1-a361-73921ad2904c.mp4
+
+	
 ## Instructions to run
 
 * Pre-requisites:
